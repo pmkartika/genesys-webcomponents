@@ -1,118 +1,84 @@
 import {
   Component,
   Element,
-  Event,
-  EventEmitter,
   h,
-  JSX,
-  Listen,
-  Prop
+  Prop,
+  Event,
+  EventEmitter
 } from '@stencil/core';
-
-import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
-
 import tagResources from './i18n/en.json';
-import { GuxTagColor } from './gux-tag.types';
+import { buildI18nForComponent } from '../../../i18n';
 
 @Component({
   styleUrl: 'gux-tag.less',
   tag: 'gux-tag-beta'
 })
 export class GuxTag {
-  private i18n: GetI18nValue;
-
   @Element()
   root: HTMLElement;
 
   /**
-   * Triggered when click on remove button
+   * Triggered when click on close button
    */
   @Event()
-  guxdelete: EventEmitter<string>;
+  deleteTag: EventEmitter;
 
   /**
    * Tag background color.
    */
   @Prop()
-  color: GuxTagColor = 'default';
+  color:
+    | 'navy'
+    | 'blue'
+    | 'electric-purple'
+    | 'aqua-green'
+    | 'fuscha'
+    | 'dark-purple'
+    | 'bubblegum-pink'
+    | 'olive-green'
+    | 'lilac'
+    | 'yellow-green';
 
   /**
    * Index for remove tag
    */
   @Prop()
-  value: string;
+  tagId: string;
 
-  /**
-   * Tag is removable.
-   */
-  @Prop()
-  removable: boolean = false;
+  private i18n: (resourceKey: string, context?: any) => string;
 
-  /**
-   * Tag icon name.
-   */
-  @Prop()
-  icon: string;
-
-  @Listen('keydown')
-  onKeyDown(event: KeyboardEvent): void {
-    switch (event.key) {
-      case 'Backspace':
-      case 'Delete':
-        event.preventDefault();
-        event.stopPropagation();
-
-        this.removeTag();
-    }
+  private handlerClickDeleteTag(): void {
+    this.deleteTag.emit(this.tagId);
   }
 
-  private removeTag(): void {
-    this.guxdelete.emit(this.value);
+  private getDeleteButton() {
+    return (
+      <button
+        tabindex="0"
+        type="button"
+        onClick={this.handlerClickDeleteTag.bind(this)}
+        class={`gux-tag-delete-button ${this.color || ''}`}
+      >
+        <gux-icon
+          screenreader-text={this.i18n('delete-tag')}
+          icon-name="ic-close"
+          class="gux-tag-delete-icon"
+        />
+      </button>
+    );
   }
 
-  private getIcon(): JSX.Element {
-    if (this.icon) {
-      return (
-        <div class="gux-tag-icon-container">
-          <gux-icon class="gux-tag-icon" icon-name={this.icon} decorative />
-        </div>
-      );
-    }
-  }
-
-  private getRemoveButton(): JSX.Element {
-    if (this.removable) {
-      return (
-        <button
-          class={`gux-tag-remove-button gux-${this.color}`}
-          onClick={this.removeTag.bind(this)}
-          tabindex="0"
-          type="button"
-        >
-          <gux-icon
-            class="gux-tag-remove-icon"
-            icon-name="ic-close"
-            screenreader-text={this.i18n('remove-tag')}
-          />
-        </button>
-      );
-    }
-  }
-
-  async componentWillRender(): Promise<void> {
+  async componentWillRender() {
     this.i18n = await buildI18nForComponent(this.root, tagResources);
   }
 
-  render(): JSX.Element {
+  render() {
     return (
       <div class="gux-tag">
-        <div class={`gux-tag-content gux-${this.color}`}>
-          {this.getIcon()}
-          <div class={`gux-tag-text`}>
-            <slot />
-          </div>
+        <div class={`gux-tag-text ${this.color || ''}`} tabindex="0">
+          <slot />
         </div>
-        {this.getRemoveButton()}
+        {this.getDeleteButton()}
       </div>
     );
   }

@@ -1,28 +1,28 @@
-# gux-advanced-dropdown
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+# gux-tag
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property    | Attribute   | Description           | Type                                                                                                                                                                | Default     |
-| ----------- | ----------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `color`     | `color`     | Tag background color. | `"aqua-green" \| "blue" \| "bubblegum-pink" \| "dark-purple" \| "default" \| "electric-purple" \| "fuscha" \| "lilac" \| "navy" \| "olive-green" \| "yellow-green"` | `'default'` |
-| `icon`      | `icon`      | Tag icon name.        | `string`                                                                                                                                                            | `undefined` |
-| `removable` | `removable` | Tag is removable.     | `boolean`                                                                                                                                                           | `false`     |
-| `value`     | `value`     | Index for remove tag  | `string`                                                                                                                                                            | `undefined` |
+| Property | Attribute | Description           | Type                                                                                                                                                   | Default     |
+| -------- | --------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `color`  | `color`   | Tag background color. | `"aqua-green" \| "blue" \| "bubblegum-pink" \| "dark-purple" \| "electric-purple" \| "fuscha" \| "lilac" \| "navy" \| "olive-green" \| "yellow-green"` | `undefined` |
+| `tagId`  | `tag-id`  | Index for remove tag  | `string`                                                                                                                                               | `undefined` |
 
 
 ## Events
 
-| Event       | Description                           | Type                  |
-| ----------- | ------------------------------------- | --------------------- |
-| `guxdelete` | Triggered when click on remove button | `CustomEvent<string>` |
+| Event       | Description                          | Type               |
+| ----------- | ------------------------------------ | ------------------ |
+| `deleteTag` | Triggered when click on close button | `CustomEvent<any>` |
 
 
 ## Dependencies
+
+### Used by
+
+ - [gux-tag-popover-beta](../gux-tag-popover)
 
 ### Depends on
 
@@ -32,6 +32,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```mermaid
 graph TD;
   gux-tag-beta --> gux-icon
+  gux-tag-popover-beta --> gux-tag-beta
   style gux-tag-beta fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
