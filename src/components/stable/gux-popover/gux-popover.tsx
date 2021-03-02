@@ -161,7 +161,7 @@ export class GuxPopover {
       <div class="gux-popover-wrapper">
         <div class="gux-arrow" data-popper-arrow />
         {this.displayDismissButton && (
-          <div class="title-bar">
+          <div class="gux-title-bar">
             <gux-icon
               class="gux-dismiss"
               icon-name="close"
