@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.19.7](http://inindca///compare/v1.19.6...v1.19.7) (2021-03-04)
+
+
+### Bug Fixes
+
+* **gux-popover:** fixed class name missing gux prefix ([a16d0f7](http://inindca///commit/a16d0f7c584f8c1c9ab67fc812ab8651dc937392))
+
 ### [1.19.6](http://inindca///compare/v1.19.5...v1.19.6) (2021-02-12)
 
 
