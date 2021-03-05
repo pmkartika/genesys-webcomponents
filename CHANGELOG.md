@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.19.8](http://inindca///compare/v1.19.7...v1.19.8) (2021-03-05)
+
+
+### Bug Fixes
+
+* **fade:** fixed incorrect fade parameters ([9fca9c8](http://inindca///commit/9fca9c889e20bd427b4435250d88fa5060d4bda4))
+
 ### [1.19.7](http://inindca///compare/v1.19.6...v1.19.7) (2021-03-04)
 
 
