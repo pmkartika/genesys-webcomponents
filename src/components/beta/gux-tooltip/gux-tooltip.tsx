@@ -10,6 +10,7 @@ import {
   State
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
 import { randomHTMLId } from '../../../utils/dom/random-html-id';
 
 /**
@@ -63,6 +64,8 @@ export class GuxTooltip {
   }
 
   componentWillLoad(): void {
+    trackComponent(this.root);
+
     if (this.for) {
       this.forElement = document.getElementById(this.for);
     } else {

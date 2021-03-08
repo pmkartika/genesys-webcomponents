@@ -9,6 +9,8 @@ import {
   Prop,
   State
 } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
 import { KeyCode } from '../../../common-enums';
 import { whenEventIsFrom } from '../../../utils/dom/when-event-is-from';
 
@@ -231,6 +233,10 @@ export class GuxDropdown {
     const ghost = this.forcedGhostValue ? this.forcedGhostValue : valueGhost;
     const placeholder = !this.value ? this.placeholder : '';
     return this.opened && this.filterable ? ghost : placeholder;
+  }
+
+  componentWillLoad() {
+    trackComponent(this.root);
   }
 
   componentDidLoad(): void {

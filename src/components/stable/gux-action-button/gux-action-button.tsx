@@ -9,6 +9,8 @@ import {
   Watch
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
+
 import { GuxButtonAccent, GuxButtonType } from '../gux-button/gux-button.types';
 
 @Component({
@@ -119,6 +121,10 @@ export class GuxActionButton {
       this.isOpen = true;
       this.listElement.setFocusOnFirstItem();
     }
+  }
+
+  componentWillLoad() {
+    trackComponent(this.root);
   }
 
   render() {

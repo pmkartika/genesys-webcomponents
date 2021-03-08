@@ -1,5 +1,7 @@
 import { Component, Element, h, JSX, State } from '@stencil/core';
 
+import { trackComponent } from '../../../../usage-tracking';
+
 /**
  * @slot input - Required slot for input tag
  * @slot label - Required slot for label tag
@@ -22,6 +24,8 @@ export class GuxFormFieldBeta {
   private labelPosition: 'above' | 'beside' = 'above';
 
   componentWillLoad() {
+    trackComponent(this.root, { variant: this.type });
+
     this.input = this.root.querySelector(
       'input[slot="input"], select[slot="input"]'
     );

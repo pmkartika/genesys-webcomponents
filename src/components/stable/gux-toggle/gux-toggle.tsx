@@ -6,6 +6,9 @@ import {
   h,
   Prop
 } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
+
 const ENTER = 13;
 const SPACE = 32;
 
@@ -74,6 +77,10 @@ export class GuxToggle {
       label = this.root.getAttribute('aria-label') || this.root.title;
     }
     return label;
+  }
+
+  componentWillLoad() {
+    trackComponent(this.root);
   }
 
   render() {

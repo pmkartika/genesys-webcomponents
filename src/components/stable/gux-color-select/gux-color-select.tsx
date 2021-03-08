@@ -9,6 +9,9 @@ import {
   State,
   Watch
 } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
+
 import { defaultColors } from './colors';
 
 @Component({
@@ -38,6 +41,8 @@ export class GuxColorSelect {
   input: EventEmitter;
 
   componentWillLoad() {
+    trackComponent(this.root);
+
     this.activeColor = this.value;
   }
 

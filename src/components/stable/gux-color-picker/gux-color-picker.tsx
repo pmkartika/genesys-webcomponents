@@ -10,6 +10,8 @@ import {
   Watch
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
+
 @Component({
   styleUrl: 'gux-color-picker.less',
   tag: 'gux-color-picker'
@@ -46,6 +48,8 @@ export class GuxColorPicker {
   opened: boolean;
 
   componentWillLoad() {
+    trackComponent(this.root);
+
     this.activeColor = this.value;
   }
 

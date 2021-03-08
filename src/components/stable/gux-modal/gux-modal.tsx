@@ -8,6 +8,7 @@ import {
   Prop
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
 
 import modalComponentResources from './i18n/en.json';
@@ -41,6 +42,8 @@ export class GuxModal {
   private root: HTMLElement;
 
   async componentWillLoad(): Promise<void> {
+    trackComponent(this.root);
+
     this.getI18nValue = await buildI18nForComponent(
       this.root,
       modalComponentResources

@@ -9,6 +9,7 @@ import {
   Prop
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
 
 import tagResources from './i18n/en.json';
@@ -100,6 +101,8 @@ export class GuxTag {
   }
 
   async componentWillRender(): Promise<void> {
+    trackComponent(this.root);
+
     this.i18n = await buildI18nForComponent(this.root, tagResources);
   }
 

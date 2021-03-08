@@ -9,10 +9,10 @@ import {
   Prop
 } from '@stencil/core';
 
+import { trackComponent } from '../../../usage-tracking';
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
 
 import modalComponentResources from './i18n/en.json';
-
 import { GuxNotificationToastAccent } from './gux-notification-toast.types';
 
 /**
@@ -40,6 +40,8 @@ export class GuxNotificationToast {
   private root: HTMLElement;
 
   async componentWillLoad(): Promise<void> {
+    trackComponent(this.root);
+
     this.getI18nValue = await buildI18nForComponent(
       this.root,
       modalComponentResources
