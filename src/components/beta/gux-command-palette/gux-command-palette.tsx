@@ -1,7 +1,10 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
+
 import { KeyCode } from '../../../common-enums';
 import { matchesFuzzy } from '../../../utils/string/search';
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
+import { trackComponent } from '../../../usage-tracking';
+
 import paletteResources from './i18n/en.json';
 
 const filterLimit = 50;
@@ -61,6 +64,8 @@ export class GuxCommandPalette {
   private i18n: GetI18nValue;
 
   async componentWillLoad() {
+    trackComponent(this.root);
+
     this.i18n = await buildI18nForComponent(this.root, paletteResources);
   }
 

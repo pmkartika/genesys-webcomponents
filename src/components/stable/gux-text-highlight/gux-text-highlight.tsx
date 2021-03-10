@@ -1,4 +1,6 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
 import {
   getFuzzyReplacements,
   matchesFuzzy
@@ -10,6 +12,9 @@ import { GuxTextHighlightStrategy } from './gux-text-highlight.types';
   tag: 'gux-text-highlight'
 })
 export class GuxTextHighlight {
+  @Element()
+  root: HTMLElement;
+
   /**
    * The value to display.
    */
@@ -27,6 +32,10 @@ export class GuxTextHighlight {
    */
   @Prop()
   strategy: GuxTextHighlightStrategy = 'start';
+
+  componentWillLoad() {
+    trackComponent(this.root);
+  }
 
   render(): JSX.Element {
     if (this.highlight && this.text) {

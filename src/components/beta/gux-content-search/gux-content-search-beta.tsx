@@ -11,9 +11,10 @@ import {
 } from '@stencil/core';
 
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
-import contentSearchResources from './i18n/en.json';
 import { onDisabledChange } from '../../../utils/dom/on-attribute-change';
+import { trackComponent } from '../../../usage-tracking';
 
+import contentSearchResources from './i18n/en.json';
 /**
  * @slot  - Required slot for input tag
  */
@@ -72,6 +73,8 @@ export class GuxContentSearchBeta {
   }
 
   async componentWillLoad() {
+    trackComponent(this.root);
+
     this.i18n = await buildI18nForComponent(this.root, contentSearchResources);
     this.inputSlottedElement = this.root.querySelector('input');
     this.disabled = this.inputSlottedElement.disabled;

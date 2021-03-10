@@ -1,10 +1,22 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Prop
+} from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
 
 @Component({
   styleUrl: 'gux-slider.less',
   tag: 'gux-slider'
 })
 export class GuxSlider {
+  @Element()
+  root: HTMLElement;
+
   /**
    * Indicates the minimum value for the slider
    */
@@ -80,6 +92,10 @@ export class GuxSlider {
       this.update.emit(this.value);
       this.updatePosition();
     }
+  }
+
+  componentWillLoad() {
+    trackComponent(this.root);
   }
 
   /**

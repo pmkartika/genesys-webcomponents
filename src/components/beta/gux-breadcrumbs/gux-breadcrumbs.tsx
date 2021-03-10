@@ -1,6 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
+import { trackComponent } from '../../../usage-tracking';
 
 import breadcrumbsResources from './i18n/en.json';
 import { GuxBreadcrumbAccent } from './gux-breadcrumbs.types';
@@ -19,6 +20,8 @@ export class GuxBreadcrumbs {
   accent: GuxBreadcrumbAccent = 'primary';
 
   async componentWillRender(): Promise<void> {
+    trackComponent(this.root, { variant: this.accent });
+
     this.i18n = await buildI18nForComponent(this.root, breadcrumbsResources);
   }
 

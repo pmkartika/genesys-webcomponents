@@ -11,6 +11,8 @@ import {
 } from '@stencil/core';
 
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
+import { trackComponent } from '../../../usage-tracking';
+
 import defaultResources from './i18n/en.json';
 
 @Component({
@@ -133,6 +135,8 @@ export class GuxSpinButton {
   }
 
   async componentWillLoad() {
+    trackComponent(this.root);
+
     this.i18n = await buildI18nForComponent(this.root, defaultResources);
     this.validate();
   }

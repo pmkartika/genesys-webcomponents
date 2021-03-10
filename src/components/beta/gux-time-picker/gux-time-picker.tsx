@@ -9,6 +9,8 @@ import {
   State,
   Watch
 } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
 import { KeyCode } from '../../../common-enums';
 import { fromIsoTime } from '../../../utils/date/from-iso-time-string';
 
@@ -227,6 +229,8 @@ export class GuxTimePicker {
   }
 
   componentWillLoad() {
+    trackComponent(this.root);
+
     this.validateBounds();
     this.value = this.validateValue(this.value);
   }

@@ -1,4 +1,6 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+
+import { trackComponent } from '../../../usage-tracking';
 
 import { GuxRadialLoadingContext } from './gux-radial-loading.types';
 
@@ -7,11 +9,18 @@ import { GuxRadialLoadingContext } from './gux-radial-loading.types';
   tag: 'gux-radial-loading-beta'
 })
 export class GuxRadialLoading {
+  @Element()
+  root: HTMLElement;
+
   /**
    * The display context the component is in.
    */
   @Prop()
   context: GuxRadialLoadingContext = 'modal';
+
+  componentWillLoad() {
+    trackComponent(this.root, { variant: this.context });
+  }
 
   render(): JSX.Element {
     return (

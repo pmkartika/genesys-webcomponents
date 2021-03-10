@@ -1,5 +1,14 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Prop
+} from '@stencil/core';
 import { JSXBase } from '@stencil/core/internal';
+
+import { trackComponent } from '../../../usage-tracking';
 import { KeyCode } from '../../../common-enums';
 
 export type AllowedLayouts = 'small' | 'medium' | 'large';
@@ -15,6 +24,9 @@ export interface ISwitchItem {
   tag: 'gux-switch-legacy'
 })
 export class GuxSwitch {
+  @Element()
+  root: HTMLElement;
+
   /**
    * The names and values of the switch buttons
    */
@@ -84,6 +96,10 @@ export class GuxSwitch {
         </button>
       </li>
     );
+  }
+
+  componentWillLoad() {
+    trackComponent(this.root, { variant: this.layout });
   }
 
   render() {

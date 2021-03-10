@@ -12,6 +12,7 @@ import {
 
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
 import { ErrorMessageType } from '../../../common-enums';
+import { trackComponent } from '../../../usage-tracking';
 
 import textFieldResources from './i18n/en.json';
 
@@ -185,6 +186,8 @@ export class GuxTextField {
   }
 
   async componentWillLoad() {
+    trackComponent(this.root);
+
     this.internalErrorMessage = this.errorMessage;
     this.i18n = await buildI18nForComponent(this.root, textFieldResources);
   }
