@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](http://inindca///compare/v1.19.8...v1.20.0) (2021-03-11)
+
+
+### Features
+
+* **tracking:** added component tracking ([577fc59](http://inindca///commit/577fc595f3af03339a341b0851c807705768dcee))
+
 ### [1.19.8](http://inindca///compare/v1.19.7...v1.19.8) (2021-03-05)
 
 
