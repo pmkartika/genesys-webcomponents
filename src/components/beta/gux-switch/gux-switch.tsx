@@ -1,4 +1,13 @@
-import { Component, Element, h, Host, Listen, JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  Element,
+  h,
+  Host,
+  Listen,
+  JSX,
+  Prop,
+  State
+} from '@stencil/core';
 
 import { trackComponent } from '../../../usage-tracking';
 import simulateNativeEvent from '../../../utils/dom/simulate-native-event';
@@ -9,23 +18,21 @@ import { GuxSwitchAllowedLayouts } from './gux-switch.types';
  */
 @Component({
   styleUrl: 'gux-switch.less',
-  tag: 'gux-switch-beta'
+  tag: 'gux-switch-beta',
+  shadow: true
 })
 export class GuxSwitch {
   @Element()
   root: HTMLElement;
 
-  /**
-   * Used to keep track of the currently selected value
-   */
   @Prop({ mutable: true })
   value: string;
 
-  /**
-   * The allowed sizes
-   */
   @Prop()
   layout: GuxSwitchAllowedLayouts = 'default';
+
+  @State()
+  switchItems: HTMLGuxSwitchItemElement[] = [];
 
   @Listen('click')
   onClick(e: MouseEvent): void {
@@ -41,13 +48,15 @@ export class GuxSwitch {
     }
   }
 
-  private updateSelectedItem(switchItems: HTMLGuxSwitchItemElement[]): void {
-    switchItems.forEach(switchItem => {
-      if (switchItem.value === this.value) {
-        switchItem.classList.add('gux-selected');
-      } else {
-        switchItem.classList.remove('gux-selected');
-      }
+  private slotChanged(): void {
+    this.switchItems = Array.from(
+      this.root.children
+    ) as HTMLGuxSwitchItemElement[];
+  }
+
+  componentWillRender(): void {
+    this.switchItems.forEach(switchItem => {
+      switchItem.selected = switchItem.value === this.value;
     });
   }
 
@@ -56,13 +65,9 @@ export class GuxSwitch {
   }
 
   render(): JSX.Element {
-    this.updateSelectedItem(
-      Array.from(this.root.children) as HTMLGuxSwitchItemElement[]
-    );
-
     return (
       <Host role="group" class={`gux-${this.layout}`}>
-        <slot />
+        <slot onSlotchange={() => this.slotChanged()} />
       </Host>
     );
   }
