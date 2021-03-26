@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](http://inindca///compare/v1.20.1...v1.21.0) (2021-03-26)
+
+
+### Features
+
+* **gux-calendar:** added locale based start of week ([511d50c](http://inindca///commit/511d50ceea177139911ffde56b11ed18b8ab8fcc))
+
+
+### Bug Fixes
+
+* **gux-switch-beta:** slot changes now detected ([db153b8](http://inindca///commit/db153b85673731937450d8a8d7d807745bc1e115))
+
 ### [1.20.1](http://inindca///compare/v1.20.0...v1.20.1) (2021-03-17)
 
 
