@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.21.1](http://inindca///compare/v1.21.0...v1.21.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gux-table:** all row selector now unchecked when no rows in table ([770737e](http://inindca///commit/770737ef0f948126c4a9ae75dd88f1cc698b4a13))
+
 ## [1.21.0](http://inindca///compare/v1.20.1...v1.21.0) (2021-03-26)
 
 
