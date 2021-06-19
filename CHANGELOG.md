@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.21.2](http://inindca///compare/v1.21.1...v1.21.2) (2021-06-19)
+
+
+### Bug Fixes
+
+* **user-tracking:** changed version tracking object ([84782d3](http://inindca///commit/84782d340aa48c32c97a8ccf311f5da140bd2f6a))
+
 ### [1.21.1](http://inindca///compare/v1.21.0...v1.21.1) (2021-04-13)
 
 
