@@ -17,6 +17,7 @@ import {
   clearActiveOptions,
   goToOption,
   hasPreviousOption,
+  hasNextOption,
   onClickedOption,
   setFirstOptionActive,
   setInitialActiveOption,
@@ -82,7 +83,12 @@ export class GuxListbox {
 
       case 'ArrowDown':
         event.preventDefault();
-        setNextOptionActive(this.root);
+        if (hasNextOption(this.root)) {
+          event.stopPropagation();
+          setNextOptionActive(this.root);
+        } else {
+          setFirstOptionActive(this.root);
+        }
         return;
 
       case 'ArrowUp': {
@@ -90,6 +96,8 @@ export class GuxListbox {
         if (hasPreviousOption(this.root)) {
           event.stopPropagation();
           setPreviousOptionActive(this.root);
+        } else {
+          setLastOptionActive(this.root);
         }
         return;
       }
