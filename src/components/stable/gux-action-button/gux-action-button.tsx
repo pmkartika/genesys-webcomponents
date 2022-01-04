@@ -105,9 +105,11 @@ export class GuxActionButton {
         }
         break;
       case 'Enter':
-        setTimeout(() => {
-          void this.listElement.setFocusOnFirstItem();
-        }, this.moveFocusDelay);
+        if (composedPath.includes(this.dropdownButton)) {
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
         break;
     }
   }
@@ -118,7 +120,7 @@ export class GuxActionButton {
 
     switch (event.key) {
       case ' ':
-        if (!composedPath.includes(this.listElement)) {
+        if (composedPath.includes(this.dropdownButton)) {
           setTimeout(() => {
             void this.listElement.setFocusOnFirstItem();
           }, this.moveFocusDelay);
