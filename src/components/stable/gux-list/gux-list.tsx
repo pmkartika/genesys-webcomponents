@@ -163,10 +163,13 @@ export class GuxList {
     let newIndex = -1;
     switch (event.key) {
       case 'ArrowUp':
-        if (this.selectedIndex) {
+        if (this.selectedIndex !== 0) {
           event.preventDefault();
           newIndex = this.selectedIndex - 1;
           event.stopPropagation();
+        } else if (!this.root.classList.contains('gux-command-palette-list')) {
+          event.preventDefault();
+          newIndex = filteredList.length - 1;
         }
         break;
       case 'Home':
@@ -178,6 +181,10 @@ export class GuxList {
         if (this.selectedIndex !== filteredList.length - 1) {
           event.preventDefault();
           newIndex = this.selectedIndex + 1;
+          event.stopPropagation();
+        } else if (!this.root.classList.contains('gux-command-palette-list')) {
+          event.preventDefault();
+          newIndex = 0;
           event.stopPropagation();
         }
         break;

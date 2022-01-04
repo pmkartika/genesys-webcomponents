@@ -36,7 +36,8 @@ export class GuxActionItem {
   onKeydown(event: KeyboardEvent): void {
     switch (event.key) {
       case 'Enter':
-      case 'Space':
+      case ' ':
+        event.preventDefault();
         this.onItemClicked();
         return;
     }

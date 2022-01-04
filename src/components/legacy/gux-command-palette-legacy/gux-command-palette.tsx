@@ -283,7 +283,11 @@ export class GuxCommandPaletteLegacy {
     header?: string
   ): HTMLGuxListElement {
     return (
-      <gux-list highlight={filter} tabindex="-1">
+      <gux-list
+        class="gux-command-palette-list"
+        highlight={filter}
+        tabindex="-1"
+      >
         {this.transformCommands(sortActions(items), header)}
       </gux-list>
     );

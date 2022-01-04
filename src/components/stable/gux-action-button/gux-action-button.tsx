@@ -26,6 +26,7 @@ import defaultResources from './i18n/en.json';
 export class GuxActionButton {
   private listElement: HTMLGuxListElement;
   private dropdownButton: HTMLElement;
+  private moveFocusDelay: number = 100;
   private i18n: GetI18nValue;
 
   @Element()
@@ -86,17 +87,41 @@ export class GuxActionButton {
     switch (event.key) {
       case 'Escape':
         this.isOpen = false;
-
         if (composedPath.includes(this.listElement)) {
           this.dropdownButton.focus();
         }
-
         break;
+      case 'Tab': {
+        this.isOpen = false;
+        break;
+      }
       case 'ArrowDown':
         event.preventDefault();
-        if (!composedPath.includes(this.listElement)) {
+        if (composedPath.includes(this.dropdownButton)) {
           this.isOpen = true;
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
+        break;
+      case 'Enter':
+        setTimeout(() => {
           void this.listElement.setFocusOnFirstItem();
+        }, this.moveFocusDelay);
+        break;
+    }
+  }
+
+  @Listen('keyup')
+  handleKeyup(event: KeyboardEvent): void {
+    const composedPath = event.composedPath();
+
+    switch (event.key) {
+      case ' ':
+        if (!composedPath.includes(this.listElement)) {
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
         }
         break;
     }
