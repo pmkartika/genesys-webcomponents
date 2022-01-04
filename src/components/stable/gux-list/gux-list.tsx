@@ -164,6 +164,7 @@ export class GuxList {
     switch (event.key) {
       case 'ArrowUp':
         if (this.selectedIndex) {
+          event.preventDefault();
           newIndex = this.selectedIndex - 1;
           event.stopPropagation();
         }
@@ -175,6 +176,7 @@ export class GuxList {
         break;
       case 'ArrowDown':
         if (this.selectedIndex !== filteredList.length - 1) {
+          event.preventDefault();
           newIndex = this.selectedIndex + 1;
           event.stopPropagation();
         }

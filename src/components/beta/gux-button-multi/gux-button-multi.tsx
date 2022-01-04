@@ -75,6 +75,7 @@ export class GuxButtonMulti {
 
         break;
       case 'ArrowDown':
+        event.preventDefault();
         if (!composedPath.includes(this.listElement)) {
           this.isOpen = true;
           void this.listElement.setFocusOnFirstItem();

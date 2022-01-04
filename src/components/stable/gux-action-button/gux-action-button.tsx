@@ -79,8 +79,8 @@ export class GuxActionButton {
   @Prop({ mutable: true })
   isOpen: boolean = false;
 
-  @Listen('keyup')
-  handleKeyup(event: KeyboardEvent): void {
+  @Listen('keydown')
+  handleKeydown(event: KeyboardEvent): void {
     const composedPath = event.composedPath();
 
     switch (event.key) {
@@ -93,6 +93,7 @@ export class GuxActionButton {
 
         break;
       case 'ArrowDown':
+        event.preventDefault();
         if (!composedPath.includes(this.listElement)) {
           this.isOpen = true;
           void this.listElement.setFocusOnFirstItem();
