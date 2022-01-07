@@ -24,6 +24,7 @@ export class GuxButtonMulti {
   private root: HTMLElement;
   listElement: HTMLGuxListElement;
   dropdownButton: HTMLElement;
+  private moveFocusDelay: number = 100;
 
   /**
    * Triggered when the menu is open
@@ -61,8 +62,8 @@ export class GuxButtonMulti {
   @Prop({ mutable: true })
   isOpen: boolean = false;
 
-  @Listen('keyup')
-  handleKeyup(event: KeyboardEvent): void {
+  @Listen('keydown')
+  handleKeydown(event: KeyboardEvent): void {
     const composedPath = event.composedPath();
 
     switch (event.key) {
@@ -74,13 +75,35 @@ export class GuxButtonMulti {
         }
 
         break;
+      case 'Enter':
+        if (!composedPath.includes(this.listElement)) {
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
+        break;
       case 'ArrowDown':
         event.preventDefault();
         if (!composedPath.includes(this.listElement)) {
           this.isOpen = true;
-          void this.listElement.setFocusOnFirstItem();
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
         }
         break;
+    }
+  }
+
+  @Listen('keyup')
+  handleKeyup(event: KeyboardEvent): void {
+    const composedPath = event.composedPath();
+    switch (event.key) {
+      case ' ':
+        if (!composedPath.includes(this.listElement)) {
+          setTimeout(() => {
+            void this.listElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
     }
   }
 
