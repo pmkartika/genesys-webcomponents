@@ -102,13 +102,20 @@ export class GuxDropdownV2Beta {
         this.collapseListbox('focusFieldButton');
         return;
       case 'Tab':
-        this.collapseListbox('noFocusChange');
+        if (
+          !(
+            event.shiftKey &&
+            this.filterable &&
+            document.activeElement === this.listboxElement
+          )
+        ) {
+          this.collapseListbox('noFocusChange');
+        }
         return;
-      case 'ArrowUp':
-        if (this.filterable) {
-          if (document.activeElement === this.listboxElement) {
-            return this.filterElement.focus();
-          }
+      case 'ArrowDown':
+        if (document.activeElement !== this.listboxElement) {
+          event.preventDefault();
+          this.expanded = !this.expanded;
         }
         return;
     }
