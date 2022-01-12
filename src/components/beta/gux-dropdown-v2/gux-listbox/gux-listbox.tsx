@@ -221,7 +221,7 @@ export class GuxListbox {
 
   render(): JSX.Element {
     return (
-      <Host role="listbox" tabIndex={0}>
+      <Host role="listbox" tabindex={0}>
         <slot onSlotchange={() => this.setListboxOptions()} />
         {this.renderAllListboxOptionsFiltered()}
       </Host>

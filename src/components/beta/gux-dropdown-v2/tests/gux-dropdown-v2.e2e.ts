@@ -29,7 +29,7 @@ describe('gux-dropdown-v2', () => {
       await page.waitForChanges();
       await a11yCheck(page, [], 'before opening dropdown');
       const dropdownButtonElm = await page.find(
-        'gux-dropdown-v2-beta >>> .gux-field-button'
+        'gux-dropdown-v2-beta >>> .gux-field'
       );
       await dropdownButtonElm.click();
       await page.waitForChanges();

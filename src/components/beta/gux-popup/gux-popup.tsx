@@ -14,6 +14,7 @@ export class GuxPopup {
   private popperInstance: Instance;
   private targetElementContainer: HTMLElement;
   private popupElementContainer: HTMLElement;
+  private moveFocusDelay: number = 100;
 
   @Prop()
   expanded: boolean = false;
@@ -25,6 +26,16 @@ export class GuxPopup {
   onExpandedChange(expanded: boolean) {
     if (expanded) {
       this.popperInstance.forceUpdate();
+      if (this.popupElementContainer.children[0].children[0]) {
+        setTimeout(() => {
+          (
+            this.popupElementContainer.children[0].children[0] as HTMLElement
+          ).setAttribute('tabindex', '0');
+          (
+            this.popupElementContainer.children[0].children[0] as HTMLElement
+          ).focus();
+        }, this.moveFocusDelay);
+      }
     }
   }
 
