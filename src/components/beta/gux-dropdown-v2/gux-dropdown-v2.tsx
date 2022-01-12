@@ -17,7 +17,7 @@ import { trackComponent } from '../../../usage-tracking';
 
 import translationResources from './i18n/en.json';
 
-import { getSearchOption } from './gux-listbox/gux-listbox.service';
+import { getSearchOption } from '../gux-listbox/gux-listbox.service';
 
 /**
  * @slot - for gux-list-box

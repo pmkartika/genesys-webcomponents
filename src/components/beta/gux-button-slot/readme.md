@@ -21,6 +21,7 @@
 ### Used by
 
  - [gux-action-button](../../stable/gux-action-button)
+ - [gux-button-dropdown](../gux-button-dropdown)
  - [gux-button-multi](../gux-button-multi)
  - [gux-pagination-buttons](../../stable/gux-pagination/gux-pagination-buttons)
  - [gux-pagination-cursor-beta](../gux-pagination-cursor)
@@ -30,6 +31,7 @@
 ```mermaid
 graph TD;
   gux-action-button --> gux-button-slot-beta
+  gux-button-dropdown --> gux-button-slot-beta
   gux-button-multi --> gux-button-slot-beta
   gux-pagination-buttons --> gux-button-slot-beta
   gux-pagination-cursor-beta --> gux-button-slot-beta
