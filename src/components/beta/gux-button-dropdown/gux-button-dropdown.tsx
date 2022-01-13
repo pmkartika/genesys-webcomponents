@@ -13,11 +13,13 @@ import {
 import { trackComponent } from '../../../usage-tracking';
 import { OnClickOutside } from '../../../utils/decorator/on-click-outside';
 
-// import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
+import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
 import {
   GuxButtonAccent,
   GuxButtonType
 } from '../../stable/gux-button/gux-button.types';
+
+import defaultResources from './i18n/en.json';
 
 @Component({
   styleUrl: 'gux-button-dropdown.less',
@@ -29,7 +31,8 @@ export class GuxButtonDropdown {
   private root: HTMLElement;
   listboxElement: HTMLGuxListboxElement;
   dropdownButton: HTMLElement;
-  private moveFocusDelay: number = 100;
+  actionButton: HTMLElement;
+  private i18n: GetI18nValue;
 
   /**
    * Triggered when the menu is open
@@ -92,43 +95,21 @@ export class GuxButtonDropdown {
     switch (event.key) {
       case 'Escape':
         this.expanded = false;
-
         if (composedPath.includes(this.listboxElement)) {
           this.dropdownButton.focus();
         }
-
         break;
-      // case 'Enter':
-      //   if (!composedPath.includes(this.listboxElement)) {
-      //     setTimeout(() => {
-      //       void this.listboxElement.setFocusOnFirstItem();
-      //     }, this.moveFocusDelay);
-      //   }
-      //   break;
+
       case 'ArrowDown':
-        if (document.activeElement !== this.listboxElement) {
+        if (
+          document.activeElement !== this.listboxElement &&
+          document.activeElement !== this.actionButton
+        ) {
           event.preventDefault();
-          console.log('doing the thing');
           this.expanded = true;
-          // setTimeout(() => {
-          //   void this.listboxElement.setFocusOnFirstItem();
-          // }, this.moveFocusDelay);
         }
         break;
     }
-  }
-
-  @Listen('keyup')
-  handleKeyup(event: KeyboardEvent): void {
-    const composedPath = event.composedPath();
-    // switch (event.key) {
-    //   case ' ':
-    //     if (!composedPath.includes(this.listboxElement)) {
-    //       setTimeout(() => {
-    //         void this.listboxElement.setFocusOnFirstItem();
-    //       }, this.moveFocusDelay);
-    //     }
-    // }
   }
 
   @Watch('disabled')
@@ -144,7 +125,6 @@ export class GuxButtonDropdown {
       if (this.listboxElement) {
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            console.log('touch');
             this.listboxElement.focus();
           });
         });
@@ -154,18 +134,6 @@ export class GuxButtonDropdown {
       this.close.emit();
     }
   }
-
-  // @Watch('expanded')
-  // focusSelectedItemAfterRender(expanded: boolean) {
-  //   if (expanded && this.listboxElement) {
-  //     requestAnimationFrame(() => {
-  //       requestAnimationFrame(() => {
-  //         console.log('touch')
-  //         this.listboxElement.focus();
-  //       });
-  //     });
-  //   }
-  // }
 
   @OnClickOutside({ triggerEvents: 'mousedown' })
   onClickOutside(): void {
@@ -185,15 +153,24 @@ export class GuxButtonDropdown {
     }
   }
 
-  private onListboxElementFocusout(event: FocusEvent): void {
-    if (event.relatedTarget !== null && !this.root.matches(':focus-within')) {
-      this.expanded = false;
-    }
+  private onListboxElementFocusout(): void {
+    this.expanded = false;
   }
 
-  componentWillLoad(): void {
+  async componentWillLoad(): Promise<void> {
     trackComponent(this.root, { variant: this.accent });
     this.listboxElement = this.root.querySelector('gux-listbox');
+    this.i18n = await buildI18nForComponent(this.root, defaultResources);
+  }
+
+  componentDidLoad(): void {
+    if (!this.listboxElement?.getAttribute('aria-label')) {
+      this.listboxElement?.setAttribute('aria-label', this.text);
+    }
+    // this.listboxElement?.addEventListener(
+    //   'focusout',
+    //   this.onListboxElementFocusout.bind(this)
+    // );
   }
 
   private renderButton(): JSX.Element {
@@ -203,6 +180,7 @@ export class GuxButtonDropdown {
           <button
             type={this.type}
             disabled={this.disabled}
+            ref={el => (this.actionButton = el)}
             onClick={() => this.onActionClick()}
           >
             {this.text}
@@ -217,9 +195,9 @@ export class GuxButtonDropdown {
             onClick={() => this.toggle()}
             aria-haspopup="listbox"
             aria-expanded={this.expanded.toString()}
-            // aria-label={this.i18n('actionButtonDropdown', {
-            //   buttonTitle: this.text
-            // })}
+            aria-label={this.i18n('actionButtonDropdown', {
+              buttonTitle: this.text
+            })}
           >
             <gux-icon decorative icon-name="chevron-small-down"></gux-icon>
           </button>
