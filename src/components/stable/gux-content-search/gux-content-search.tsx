@@ -52,8 +52,7 @@ export class GuxContentSearch {
    * Triggered when Current match value changes
    * @return The Current match value
    */
-  @Event()
-  guxcurrentmatchchanged: EventEmitter<number>;
+  @Event() guxcurrentmatchchanged: EventEmitter<number>;
 
   private i18n: GetI18nValue;
 

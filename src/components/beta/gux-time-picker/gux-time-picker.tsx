@@ -56,8 +56,7 @@ export class GuxTimePicker {
   @State()
   suggestion: string = '00';
 
-  @Event()
-  changed: EventEmitter<string>;
+  @Event() guxchanged: EventEmitter<string>;
 
   inputElement: HTMLInputElement;
   focusedField: HTMLInputElement;
@@ -68,7 +67,7 @@ export class GuxTimePicker {
 
   @Watch('value')
   watchValue(newValue: string) {
-    this.changed.emit(newValue);
+    this.guxchanged.emit(newValue);
   }
 
   @Listen('keydown', { passive: false })

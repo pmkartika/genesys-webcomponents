@@ -27,8 +27,7 @@ export class GuxRowSelect {
   @Prop({ mutable: true })
   selected: boolean = false;
 
-  @Event()
-  internalrowselectchange: EventEmitter;
+  @Event() internalrowselectchange: EventEmitter;
 
   @Listen('input')
   onCheck(event: CustomEvent): void {

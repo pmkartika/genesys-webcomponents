@@ -47,8 +47,8 @@ describe('gux-disclosure-button', () => {
         const panel = element.shadowRoot.querySelector('.gux-disclosure-panel');
         const icon = element.shadowRoot.querySelector('gux-icon');
 
-        const activeEventSpy = jest.fn();
-        element.addEventListener('active', activeEventSpy);
+        const guxactiveEventSpy = jest.fn();
+        element.addEventListener('guxactive', guxactiveEventSpy);
 
         expect(element.isOpen).toBe(false);
         expect(panel).not.toHaveClass('gux-active');
@@ -61,7 +61,7 @@ describe('gux-disclosure-button', () => {
         expect(element.isOpen).toBe(true);
         expect(panel).toHaveClass('gux-active');
         expect(icon).toEqualAttribute('icon-name', 'arrow-solid-left');
-        expect(activeEventSpy).toHaveBeenCalledWith(
+        expect(guxactiveEventSpy).toHaveBeenCalledWith(
           expect.objectContaining({
             detail: true
           })
@@ -81,8 +81,8 @@ describe('gux-disclosure-button', () => {
         const panel = element.shadowRoot.querySelector('.gux-disclosure-panel');
         const icon = element.shadowRoot.querySelector('gux-icon');
 
-        const activeEventSpy = jest.fn();
-        element.addEventListener('active', activeEventSpy);
+        const guxactiveEventSpy = jest.fn();
+        element.addEventListener('guxactive', guxactiveEventSpy);
 
         expect(element.isOpen).toBe(true);
         expect(panel).toHaveClass('gux-active');
@@ -95,7 +95,7 @@ describe('gux-disclosure-button', () => {
         expect(element.isOpen).toBe(false);
         expect(panel).not.toHaveClass('gux-active');
         expect(icon).toEqualAttribute('icon-name', 'arrow-solid-right');
-        expect(activeEventSpy).toHaveBeenCalledWith(
+        expect(guxactiveEventSpy).toHaveBeenCalledWith(
           expect.objectContaining({
             detail: false
           })

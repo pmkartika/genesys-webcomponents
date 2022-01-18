@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event   | Description | Type                   |
-| ------- | ----------- | ---------------------- |
-| `press` |             | `CustomEvent<unknown>` |
+| Event      | Description | Type                   |
+| ---------- | ----------- | ---------------------- |
+| `guxpress` |             | `CustomEvent<unknown>` |
 
 
 ----------------------------------------------

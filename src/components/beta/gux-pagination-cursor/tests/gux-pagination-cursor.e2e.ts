@@ -34,13 +34,13 @@ describe('gux-pagination-cursor-beta', () => {
     });
   });
 
-  describe('guxPaginationCursorchange', () => {
-    it('should fire guxPaginationCursorchange(previous) event when enabled previous button is clicked', async () => {
+  describe('guxpaginationcursorchange', () => {
+    it('should fire guxpaginationcursorchange(previous) event when enabled previous button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta lang="en" has-previous></gux-pagination-cursor-beta>';
       const page = await newSparkE2EPage({ html });
       const guxPaginationCursorchangeSpy = await page.spyOnEvent(
-        'guxPaginationCursorchange'
+        'guxpaginationcursorchange'
       );
 
       await clickButton(page, 'previous');
@@ -51,12 +51,12 @@ describe('gux-pagination-cursor-beta', () => {
       );
     });
 
-    it('should fire guxPaginationCursorchange(next) event when enabled next button is clicked', async () => {
+    it('should fire guxpaginationcursorchange(next) event when enabled next button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta lang="en" has-next></gux-pagination-cursor-beta>';
       const page = await newSparkE2EPage({ html });
       const guxPaginationCursorchangeSpy = await page.spyOnEvent(
-        'guxPaginationCursorchange'
+        'guxpaginationcursorchange'
       );
 
       await clickButton(page, 'next');
@@ -65,12 +65,12 @@ describe('gux-pagination-cursor-beta', () => {
       expect(guxPaginationCursorchangeSpy).toHaveReceivedEventDetail('next');
     });
 
-    it('should not fire guxPaginationCursorchange(previous) event when disabled previous button is clicked', async () => {
+    it('should not fire guxpaginationcursorchange(previous) event when disabled previous button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta lang="en"></gux-pagination-cursor-beta>';
       const page = await newSparkE2EPage({ html });
       const guxPaginationCursorchangeSpy = await page.spyOnEvent(
-        'guxPaginationCursorchange'
+        'guxpaginationcursorchange'
       );
 
       await clickButton(page, 'previous');
@@ -80,12 +80,12 @@ describe('gux-pagination-cursor-beta', () => {
       expect(guxPaginationCursorchangeSpy).not.toHaveReceivedEvent();
     });
 
-    it('should not fire guxPaginationCursorchange(next) event when disabled next button is clicked', async () => {
+    it('should not fire guxpaginationcursorchange(next) event when disabled next button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta lang="en"></gux-pagination-cursor-beta>';
       const page = await newSparkE2EPage({ html });
       const guxPaginationCursorchangeSpy = await page.spyOnEvent(
-        'guxPaginationCursorchange'
+        'guxpaginationcursorchange'
       );
 
       await clickButton(page, 'next');

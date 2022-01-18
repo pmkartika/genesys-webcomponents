@@ -64,7 +64,7 @@ describe('gux-disclosure-button', () => {
         const button = await element.find('pierce/.gux-disclosure-button');
         const panel = await element.find('pierce/.gux-disclosure-panel');
         const icon = await element.find('pierce/gux-icon');
-        const onActive = await page.spyOnEvent('active');
+        const onGuxactive = await page.spyOnEvent('guxactive');
 
         expect(await element.getProperty('isOpen')).toBe(false);
         expect(panel).not.toHaveClass('gux-active');
@@ -76,7 +76,7 @@ describe('gux-disclosure-button', () => {
         expect(await element.getProperty('isOpen')).toBe(true);
         expect(panel).toHaveClass('gux-active');
         expect(icon).toEqualAttribute('icon-name', 'arrow-solid-left');
-        expect(onActive).toHaveReceivedEventDetail(true);
+        expect(onGuxactive).toHaveReceivedEventDetail(true);
       });
     });
   });

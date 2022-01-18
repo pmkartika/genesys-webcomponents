@@ -34,8 +34,7 @@ export class GuxTabPanel {
   /**
    * Triggers when the active panel changes
    */
-  @Event()
-  guxactivepanelchange: EventEmitter<string>;
+  @Event() guxactivepanelchange: EventEmitter<string>;
 
   @Watch('active')
   watchActivePanel() {

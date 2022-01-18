@@ -16,10 +16,10 @@
 
 ## Events
 
-| Event         | Description                                       | Type                    |
-| ------------- | ------------------------------------------------- | ----------------------- |
-| `newTab`      | Triggers when the new tab button is selected.     | `CustomEvent<any>`      |
-| `sortChanged` | Triggers when the sorting of the tabs is changed. | `CustomEvent<string[]>` |
+| Event            | Description                                       | Type                    |
+| ---------------- | ------------------------------------------------- | ----------------------- |
+| `guxnewtab`      | Triggers when the new tab button is selected.     | `CustomEvent<any>`      |
+| `guxsortchanged` | Triggers when the sorting of the tabs is changed. | `CustomEvent<string[]>` |
 
 
 ## Methods

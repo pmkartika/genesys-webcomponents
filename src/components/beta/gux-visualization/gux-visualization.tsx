@@ -30,11 +30,9 @@ export class GuxVisualization {
     renderer: 'svg'
   };
 
-  @Event()
-  chartComponentReady: EventEmitter;
+  @Event() guxchartcomponentready: EventEmitter;
 
-  @Event()
-  chartClicked: EventEmitter;
+  @Event() guxchartclicked: EventEmitter;
 
   @Element()
   root: HTMLElement;
@@ -50,7 +48,7 @@ export class GuxVisualization {
   }
 
   handleChartClick(_name: string, value: unknown) {
-    this.chartClicked.emit(value);
+    this.guxchartclicked.emit(value);
   }
 
   async componentWillRender(): Promise<void> {
@@ -89,7 +87,7 @@ export class GuxVisualization {
   }
 
   componentDidLoad() {
-    this.chartComponentReady.emit();
+    this.guxchartcomponentready.emit();
   }
 
   render(): JSX.Element {

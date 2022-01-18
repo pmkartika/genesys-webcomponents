@@ -16,9 +16,9 @@ This is a UI button component that is used to open or dismiss an associated pane
 
 ## Events
 
-| Event    | Description                                              | Type                   |
-| -------- | -------------------------------------------------------- | ---------------------- |
-| `active` | Return the state of the components panel on state change | `CustomEvent<boolean>` |
+| Event       | Description                                              | Type                   |
+| ----------- | -------------------------------------------------------- | ---------------------- |
+| `guxactive` | Return the state of the components panel on state change | `CustomEvent<boolean>` |
 
 
 ## Dependencies

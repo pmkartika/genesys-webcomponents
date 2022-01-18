@@ -15,10 +15,10 @@
 
 ## Events
 
-| Event                 | Description | Type               |
-| --------------------- | ----------- | ------------------ |
-| `chartClicked`        |             | `CustomEvent<any>` |
-| `chartComponentReady` |             | `CustomEvent<any>` |
+| Event                    | Description | Type               |
+| ------------------------ | ----------- | ------------------ |
+| `guxchartclicked`        |             | `CustomEvent<any>` |
+| `guxchartcomponentready` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

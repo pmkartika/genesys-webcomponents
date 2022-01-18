@@ -23,6 +23,7 @@ describe('gux-button-multi', () => {
     <gux-action-item><span>I am a span</span></gux-action-item>
   </gux-button-multi>
   `;
+
   it('renders', async () => {
     const page = await newSparkE2EPage({ html });
 
@@ -31,10 +32,10 @@ describe('gux-button-multi', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should fire open and close events if not disabled', async () => {
+  it('should fire guxopen and guxclose events if not disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onOpen = await page.spyOnEvent('open');
-    const onClose = await page.spyOnEvent('close');
+    const onGuxopen = await page.spyOnEvent('guxopen');
+    const onGuxclose = await page.spyOnEvent('guxclose');
 
     await clickDropdownButton(page);
 
@@ -42,13 +43,13 @@ describe('gux-button-multi', () => {
 
     await clickDropdownButton(page);
 
-    expect(onOpen).toHaveReceivedEventTimes(1);
-    expect(onClose).toHaveReceivedEventTimes(1);
+    expect(onGuxopen).toHaveReceivedEventTimes(1);
+    expect(onGuxclose).toHaveReceivedEventTimes(1);
   });
 
-  it('should not fire open event if disabled', async () => {
+  it('should not fire guxopen event if disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onOpen = await page.spyOnEvent('open');
+    const onGuxopen = await page.spyOnEvent('guxopen');
     const element = await page.find('gux-button-multi');
     element.setAttribute('disabled', 'disabled');
     await page.waitForChanges();
@@ -57,6 +58,6 @@ describe('gux-button-multi', () => {
 
     await a11yCheck(page);
 
-    expect(onOpen).toHaveReceivedEventTimes(0);
+    expect(onGuxopen).toHaveReceivedEventTimes(0);
   });
 });

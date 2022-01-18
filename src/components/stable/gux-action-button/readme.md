@@ -26,11 +26,11 @@ Example usage
 
 ## Events
 
-| Event         | Description                                 | Type               |
-| ------------- | ------------------------------------------- | ------------------ |
-| `actionClick` | Triggered when the action button is clicked | `CustomEvent<any>` |
-| `close`       | Triggered when the menu is close            | `CustomEvent<any>` |
-| `open`        | Triggered when the menu is open             | `CustomEvent<any>` |
+| Event            | Description                                 | Type               |
+| ---------------- | ------------------------------------------- | ------------------ |
+| `guxactionclick` | Triggered when the action button is clicked | `CustomEvent<any>` |
+| `guxclose`       | Triggered when the menu is close            | `CustomEvent<any>` |
+| `guxopen`        | Triggered when the menu is open             | `CustomEvent<any>` |
 
 
 ## Dependencies

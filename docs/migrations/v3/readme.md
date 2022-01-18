@@ -26,6 +26,38 @@
   * `gux-command-palette-legacy` -> Contact the Core UI team if you need help migrating away from this component.
   * `gux-tabs-legacy` -> `gux-tabs-advanced` or `gux-tabs`
   * `gux-text-label-legacy` -> Contact the Core UI team if you need help migrating away from this component.
+* All public events emitted from non legacy components (in v3) are prefixed with `gux`
+  * gux-button-multi
+    * `open` -> `guxopen`
+    * `open` -> `guxclose`
+
+  * gux-time-picker-beta
+    * `changed` -> `guxchanged`
+
+  * gux-visualization-beta
+    * `chartComponentReady` -> `guxchartcomponentready`
+    * `chartClicked` -> `guxchartclicked`
+
+  * gux-action-button
+    * `open` -> `guxopen`
+    * `close` -> `guxclose`
+    * `actionClick` -> `guxactionclick`
+
+  * gux-action-item
+    * `press` -> `guxpress`
+
+  * gux-disclosure-button
+    * `active` -> `guxactive`
+
+  * gux-input-color-option
+    * `colorSelect` -> `internalcolorselect`
+
+  * gux-tab-advanced-list
+    * `newTab` -> `guxnewtab`
+    * `sortChanged` -> `guxsortchanged`
+
+  * gux-toggle
+    * `check` -> `guxcheck`
 
 ## Configuration
 Set the `allowSyntheticDefaultImports` compiler option  to "true" in your host apps tsconfig.json. Omitting this option will cause build errors in your app.
@@ -148,3 +180,9 @@ Contact the Core UI team if you need help migrating away from this component.
 ### gux-text-label-legacy
 
 Contact the Core UI team if you need help migrating away from this component.
+
+## Public Events
+
+All public events emitted from non legacy components (in v3) are prefixed with `gux`
+
+[More details here](public-events)

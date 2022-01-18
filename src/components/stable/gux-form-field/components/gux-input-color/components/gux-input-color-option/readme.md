@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event         | Description                       | Type               |
-| ------------- | --------------------------------- | ------------------ |
-| `colorSelect` | Triggers when a color is selected | `CustomEvent<any>` |
+| Event            | Description                       | Type               |
+| ---------------- | --------------------------------- | ------------------ |
+| `internalcolorselect` | Triggers when a color is selected | `CustomEvent<any>` |
 
 
 ## Dependencies

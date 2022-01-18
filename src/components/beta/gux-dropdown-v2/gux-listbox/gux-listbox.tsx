@@ -59,8 +59,7 @@ export class GuxListbox {
   @State()
   allListboxOptionsFiltered: boolean;
 
-  @Event()
-  internallistboxoptionsupdated: EventEmitter;
+  @Event() internallistboxoptionsupdated: EventEmitter;
 
   @Listen('focus')
   onFocus(): void {

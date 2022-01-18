@@ -25,9 +25,9 @@ A check event is triggered when the state of the component changed.
 
 ## Events
 
-| Event   | Description | Type                   |
-| ------- | ----------- | ---------------------- |
-| `check` |             | `CustomEvent<boolean>` |
+| Event      | Description | Type                   |
+| ---------- | ----------- | ---------------------- |
+| `guxcheck` |             | `CustomEvent<boolean>` |
 
 
 ## Dependencies

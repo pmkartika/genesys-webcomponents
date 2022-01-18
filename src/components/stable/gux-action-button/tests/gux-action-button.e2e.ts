@@ -5,7 +5,7 @@ import { newSparkE2EPage, a11yCheck } from '../../../../../tests/e2eTestUtils';
 async function clickActionButton(page: E2EPage): Promise<void> {
   return await page.evaluate(() => {
     const element = document.querySelector('gux-action-button');
-    const actionButton = element.shadowRoot.querySelector(
+    const actionButton: HTMLButtonElement = element.shadowRoot.querySelector(
       '.gux-action-button > button'
     );
 
@@ -16,7 +16,7 @@ async function clickActionButton(page: E2EPage): Promise<void> {
 async function clickDropdownButton(page: E2EPage): Promise<void> {
   return await page.evaluate(() => {
     const element = document.querySelector('gux-action-button');
-    const dropdownButton = element.shadowRoot.querySelector(
+    const dropdownButton: HTMLButtonElement = element.shadowRoot.querySelector(
       '.gux-dropdown-button > button'
     );
 
@@ -52,63 +52,63 @@ describe('gux-action-button', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should fire actionClick event if not disabled', async () => {
+  it('should fire guxactionclick event if not disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onActionClick = await page.spyOnEvent('actionClick');
+    const onGuxActionclick = await page.spyOnEvent('guxactionclick');
 
     await clickActionButton(page);
 
-    expect(onActionClick).toHaveReceivedEventTimes(1);
+    expect(onGuxActionclick).toHaveReceivedEventTimes(1);
   });
 
-  it('should not fire actionClick event if disabled', async () => {
+  it('should not fire guxactionclick event if disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onActionClick = await page.spyOnEvent('actionClick');
+    const onGuxactionclick = await page.spyOnEvent('guxactionclick');
     const element = await page.find('gux-action-button');
     element.setAttribute('disabled', 'disabled');
     await page.waitForChanges();
 
     await clickActionButton(page);
 
-    expect(onActionClick).toHaveReceivedEventTimes(0);
+    expect(onGuxactionclick).toHaveReceivedEventTimes(0);
   });
 
-  it('should fire open and close events if not disabled', async () => {
+  it('should fire guxopen and guxclose events if not disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onOpen = await page.spyOnEvent('open');
-    const onClose = await page.spyOnEvent('close');
+    const onGuxopen = await page.spyOnEvent('guxopen');
+    const onGuxclose = await page.spyOnEvent('guxclose');
 
     await clickDropdownButton(page);
     await clickDropdownButton(page);
 
-    expect(onOpen).toHaveReceivedEventTimes(1);
-    expect(onClose).toHaveReceivedEventTimes(1);
+    expect(onGuxopen).toHaveReceivedEventTimes(1);
+    expect(onGuxclose).toHaveReceivedEventTimes(1);
   });
 
-  it('should not fire open event if disabled', async () => {
+  it('should not fire guxopen event if disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onOpen = await page.spyOnEvent('open');
+    const onGuxopen = await page.spyOnEvent('guxopen');
     const element = await page.find('gux-action-button');
     element.setAttribute('disabled', 'disabled');
     await page.waitForChanges();
 
     await clickDropdownButton(page);
 
-    expect(onOpen).toHaveReceivedEventTimes(0);
+    expect(onGuxopen).toHaveReceivedEventTimes(0);
   });
 
-  it('should fire press event if action-item not disabled', async () => {
+  it('should fire guxpress event if action-item not disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onPress = await page.spyOnEvent('press');
+    const onGuxpress = await page.spyOnEvent('guxpress');
 
     await clickActionItemButton(page);
 
-    expect(onPress).toHaveReceivedEventTimes(1);
+    expect(onGuxpress).toHaveReceivedEventTimes(1);
   });
 
-  it('should not fire press event if action-item disabled', async () => {
+  it('should not fire guxpress event if action-item disabled', async () => {
     const page = await newSparkE2EPage({ html });
-    const onPress = await page.spyOnEvent('press');
+    const onGuxpress = await page.spyOnEvent('guxpress');
 
     const element = await page.find('gux-action-item');
     element.setAttribute('disabled', 'disabled');
@@ -116,6 +116,6 @@ describe('gux-action-button', () => {
 
     await clickActionItemButton(page);
 
-    expect(onPress).toHaveReceivedEventTimes(0);
+    expect(onGuxpress).toHaveReceivedEventTimes(0);
   });
 });

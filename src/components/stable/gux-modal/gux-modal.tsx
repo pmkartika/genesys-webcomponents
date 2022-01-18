@@ -46,8 +46,7 @@ export class GuxModal {
   /**
    * Fired when a user dismisses the modal (The default behaviour is to remove the component from the DOM)
    */
-  @Event()
-  guxdismiss: EventEmitter<void>;
+  @Event() guxdismiss: EventEmitter<void>;
 
   @Watch('trapFocus')
   watchTrapFocus(trapFocus: boolean): void {

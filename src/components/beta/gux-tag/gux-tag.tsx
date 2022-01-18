@@ -29,8 +29,7 @@ export class GuxTag {
   /**
    * Triggered when click on remove button
    */
-  @Event()
-  guxdelete: EventEmitter<string>;
+  @Event() guxdelete: EventEmitter<string>;
 
   /**
    * Tag background color.

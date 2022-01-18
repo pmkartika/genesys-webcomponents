@@ -17,8 +17,8 @@ export class GuxColorSelect {
   @State()
   private color: string;
 
-  @Listen('colorSelect')
-  onColorSelect(event: MouseEvent): void {
+  @Listen('internalcolorselect')
+  onGuxcolorselect(event: MouseEvent): void {
     const colorOptionElement = event.target as HTMLGuxInputColorOptionElement;
     this.color = colorOptionElement.value;
     this.input.value = colorOptionElement.value;

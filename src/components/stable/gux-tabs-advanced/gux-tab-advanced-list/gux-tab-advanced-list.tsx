@@ -96,14 +96,12 @@ export class GuxTabAdvancedList {
   /**
    * Triggers when the new tab button is selected.
    */
-  @Event()
-  newTab: EventEmitter;
+  @Event() guxnewtab: EventEmitter;
 
   /**
    * Triggers when the sorting of the tabs is changed.
    */
-  @Event()
-  sortChanged: EventEmitter<string[]>;
+  @Event() guxsortchanged: EventEmitter<string[]>;
 
   @Listen('focusin')
   onFocusin(event: FocusEvent) {
@@ -389,7 +387,7 @@ export class GuxTabAdvancedList {
           const tabIds = Array.from(
             this.root.querySelectorAll('gux-tab-advanced')
           ).map(tabElement => tabElement.tabId);
-          this.sortChanged.emit(tabIds);
+          this.guxsortchanged.emit(tabIds);
         }
       }
     );
@@ -583,7 +581,7 @@ export class GuxTabAdvancedList {
         </div>
         <div class="new-tab">
           {this.showNewTabButton && !this.hasScrollbar ? (
-            <AddNewTabButton onClick={() => this.newTab.emit()} />
+            <AddNewTabButton onClick={() => this.guxnewtab.emit()} />
           ) : null}
         </div>
 
@@ -593,7 +591,7 @@ export class GuxTabAdvancedList {
             : this.renderScrollButton('scrollDown')}
 
           {this.showNewTabButton && this.hasScrollbar ? (
-            <AddNewTabButton onClick={() => this.newTab.emit()} />
+            <AddNewTabButton onClick={() => this.guxnewtab.emit()} />
           ) : null}
         </div>
       </div>

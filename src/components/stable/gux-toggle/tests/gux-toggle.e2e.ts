@@ -93,12 +93,12 @@ describe('gux-toggle', () => {
             '<gux-toggle disabled checked-label="On" unchecked-label="Off"></gux-toggle>';
           const page = await newNonrandomE2EPage({ html });
           const element = await page.find('gux-toggle');
-          const checkSpy = await element.spyOnEvent('check');
+          const guxcheckSpy = await element.spyOnEvent('guxcheck');
 
           await userInteraction(element);
           await page.waitForChanges();
 
-          expect(checkSpy).toHaveLength(0);
+          expect(guxcheckSpy).toHaveLength(0);
         });
 
         it(`should fire a check event when an enabled toggle is ${name}`, async () => {
@@ -106,12 +106,12 @@ describe('gux-toggle', () => {
             '<gux-toggle checked-label="On" unchecked-label="Off"></gux-toggle>';
           const page = await newNonrandomE2EPage({ html });
           const element = await page.find('gux-toggle');
-          const checkSpy = await element.spyOnEvent('check');
+          const guxcheckSpy = await element.spyOnEvent('guxcheck');
 
           await userInteraction(element);
           await page.waitForChanges();
 
-          expect(checkSpy).toHaveLength(1);
+          expect(guxcheckSpy).toHaveLength(1);
         });
 
         it(`should check an unchecked toggle when ${name}`, async () => {

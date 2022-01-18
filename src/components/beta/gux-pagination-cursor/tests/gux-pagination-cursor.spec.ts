@@ -21,8 +21,8 @@ describe('gux-pagination-cursor-beta', () => {
     });
   });
 
-  describe('guxPaginationCursorchange', () => {
-    it('should fire guxPaginationCursorchange(previous) event when enabled previous button is clicked', async () => {
+  describe('guxpaginationcursorchange', () => {
+    it('should fire guxpaginationcursorchange(previous) event when enabled previous button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta has-previous></gux-pagination-cursor-beta>';
       const page = await newSpecPage({ components, html, language });
@@ -33,7 +33,7 @@ describe('gux-pagination-cursor-beta', () => {
       const guxPaginationCursorchangeSpy = jest.fn();
 
       page.win.addEventListener(
-        'guxPaginationCursorchange',
+        'guxpaginationcursorchange',
         guxPaginationCursorchangeSpy
       );
 
@@ -45,7 +45,7 @@ describe('gux-pagination-cursor-beta', () => {
       );
     });
 
-    it('should fire guxPaginationCursorchange(next) event when enabled next button is clicked', async () => {
+    it('should fire guxpaginationcursorchange(next) event when enabled next button is clicked', async () => {
       const html =
         '<gux-pagination-cursor-beta has-next></gux-pagination-cursor-beta>';
       const page = await newSpecPage({ components, html, language });
@@ -56,7 +56,7 @@ describe('gux-pagination-cursor-beta', () => {
       const guxPaginationCursorchangeSpy = jest.fn();
 
       page.win.addEventListener(
-        'guxPaginationCursorchange',
+        'guxpaginationcursorchange',
         guxPaginationCursorchangeSpy
       );
 
@@ -68,7 +68,7 @@ describe('gux-pagination-cursor-beta', () => {
       );
     });
 
-    it('should not fire guxPaginationCursorchange(previous) event when disabled previous button is clicked', async () => {
+    it('should not fire guxpaginationcursorchange(previous) event when disabled previous button is clicked', async () => {
       const html = '<gux-pagination-cursor-beta></gux-pagination-cursor-beta>';
       const page = await newSpecPage({ components, html, language });
       const element = page.root as HTMLElement;
@@ -78,7 +78,7 @@ describe('gux-pagination-cursor-beta', () => {
       const guxPaginationCursorchangeSpy = jest.fn();
 
       page.win.addEventListener(
-        'guxPaginationCursorchange',
+        'guxpaginationcursorchange',
         guxPaginationCursorchangeSpy
       );
 
@@ -88,7 +88,7 @@ describe('gux-pagination-cursor-beta', () => {
       expect(guxPaginationCursorchangeSpy).not.toHaveBeenCalled();
     });
 
-    it('should not fire guxPaginationCursorchange(next) event when disabled next button is clicked', async () => {
+    it('should not fire guxpaginationcursorchange(next) event when disabled next button is clicked', async () => {
       const html = '<gux-pagination-cursor-beta></gux-pagination-cursor-beta>';
       const page = await newSpecPage({ components, html, language });
       const element = page.root as HTMLElement;
@@ -98,7 +98,7 @@ describe('gux-pagination-cursor-beta', () => {
       const guxPaginationCursorchangeSpy = jest.fn();
 
       page.win.addEventListener(
-        'guxPaginationCursorchange',
+        'guxpaginationcursorchange',
         guxPaginationCursorchangeSpy
       );
 

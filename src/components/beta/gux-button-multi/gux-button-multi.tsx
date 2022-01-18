@@ -28,14 +28,12 @@ export class GuxButtonMulti {
   /**
    * Triggered when the menu is open
    */
-  @Event()
-  open: EventEmitter;
+  @Event() guxopen: EventEmitter;
 
   /**
    * Triggered when the menu is close
    */
-  @Event()
-  close: EventEmitter;
+  @Event() guxclose: EventEmitter;
 
   /**
    * The component text.
@@ -93,9 +91,9 @@ export class GuxButtonMulti {
   @Watch('isOpen')
   watchValue(isOpen: boolean): void {
     if (isOpen) {
-      this.open.emit();
+      this.guxopen.emit();
     } else {
-      this.close.emit();
+      this.guxclose.emit();
     }
   }
 

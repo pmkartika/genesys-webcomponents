@@ -40,20 +40,17 @@ export class GuxActionButton {
   /**
    * Triggered when the menu is open
    */
-  @Event()
-  open: EventEmitter;
+  @Event() guxopen: EventEmitter;
 
   /**
    * Triggered when the menu is close
    */
-  @Event()
-  close: EventEmitter;
+  @Event() guxclose: EventEmitter;
 
   /**
    * Triggered when the action button is clicked
    */
-  @Event()
-  actionClick: EventEmitter;
+  @Event() guxactionclick: EventEmitter;
 
   /**
    * The component text.
@@ -111,9 +108,9 @@ export class GuxActionButton {
   @Watch('isOpen')
   watchValue(isOpen: boolean): void {
     if (isOpen) {
-      this.open.emit();
+      this.guxopen.emit();
     } else {
-      this.close.emit();
+      this.guxclose.emit();
     }
   }
 
@@ -131,7 +128,7 @@ export class GuxActionButton {
   private onActionClick(): void {
     if (!this.disabled) {
       this.isOpen = false;
-      this.actionClick.emit();
+      this.guxactionclick.emit();
     }
   }
 

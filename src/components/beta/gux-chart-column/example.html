@@ -48,7 +48,7 @@
     const chart4 = document.querySelector('#chart-4');
     const chart5 = document.querySelector('#chart-5');
 
-    chart1.addEventListener('chartClicked', (event) => console.log(event));
+    chart1.addEventListener('guxchartclicked', (event) => console.log(event));
 
     chart1.chartData = {'values': [
     {'category': 'a', 'value': 4},
@@ -110,3 +110,5 @@ chart5.chartData = {'values': [
 >
   --noop: none;
 </style>
+
+datepicker.addEventListener('input', (event) => console.log(datepicker.value));

@@ -30,8 +30,7 @@ export class GuxAllRowSelect {
   @Prop({ mutable: true })
   selected: boolean = false;
 
-  @Event()
-  internalallrowselectchange: EventEmitter;
+  @Event() internalallrowselectchange: EventEmitter;
 
   @Listen('input')
   onCheck(event: CustomEvent): void {

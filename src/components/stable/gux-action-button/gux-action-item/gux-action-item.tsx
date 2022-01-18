@@ -24,8 +24,7 @@ export class GuxActionItem {
   @Prop()
   disabled: boolean = false;
 
-  @Event()
-  press: EventEmitter<unknown>;
+  @Event() guxpress: EventEmitter<unknown>;
 
   @Listen('click')
   handleClick() {
@@ -44,7 +43,7 @@ export class GuxActionItem {
 
   private onItemClicked(): void {
     if (!this.disabled) {
-      this.press.emit(this.value);
+      this.guxpress.emit(this.value);
     }
   }
 

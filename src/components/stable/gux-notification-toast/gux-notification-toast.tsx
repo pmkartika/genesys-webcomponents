@@ -30,8 +30,7 @@ export class GuxNotificationToast {
   @Prop()
   accent: GuxNotificationToastAccent = 'neutral';
 
-  @Event()
-  guxdismiss: EventEmitter<void>;
+  @Event() guxdismiss: EventEmitter<void>;
 
   @Element()
   private root: HTMLElement;

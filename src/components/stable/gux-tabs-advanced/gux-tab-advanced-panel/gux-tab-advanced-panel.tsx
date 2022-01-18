@@ -28,8 +28,7 @@ export class GuxTabAdvancedPanel {
     this.active = active;
   }
 
-  @Event()
-  guxactivepanelchange: EventEmitter<string>;
+  @Event() guxactivepanelchange: EventEmitter<string>;
 
   @Watch('active')
   watchActivePanel() {

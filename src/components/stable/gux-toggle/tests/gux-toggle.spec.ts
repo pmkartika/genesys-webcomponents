@@ -79,14 +79,14 @@ describe('gux-toggle', () => {
             '<gux-toggle disabled checked-label="On" unchecked-label="Off"></gux-toggle>';
           const page = await newSpecPage({ components, html, language });
           const element = page.root as HTMLGuxToggleElement;
-          const checkSpy = jest.fn();
+          const guxcheckSpy = jest.fn();
 
-          element.addEventListener('check', checkSpy);
+          element.addEventListener('guxcheck', guxcheckSpy);
 
           userInteraction(element);
           await page.waitForChanges();
 
-          expect(checkSpy).not.toHaveBeenCalled();
+          expect(guxcheckSpy).not.toHaveBeenCalled();
         });
 
         it(`should fire a check event when an enabled toggle is ${name}`, async () => {
@@ -94,14 +94,14 @@ describe('gux-toggle', () => {
             '<gux-toggle checked-label="On" unchecked-label="Off"></gux-toggle>';
           const page = await newSpecPage({ components, html, language });
           const element = page.root as HTMLGuxToggleElement;
-          const checkSpy = jest.fn();
+          const guxcheckSpy = jest.fn();
 
-          element.addEventListener('check', checkSpy);
+          element.addEventListener('guxcheck', guxcheckSpy);
 
           userInteraction(element);
           await page.waitForChanges();
 
-          expect(checkSpy).toHaveBeenCalled();
+          expect(guxcheckSpy).toHaveBeenCalled();
         });
 
         it(`should check an unchecked toggle when ${name}`, async () => {

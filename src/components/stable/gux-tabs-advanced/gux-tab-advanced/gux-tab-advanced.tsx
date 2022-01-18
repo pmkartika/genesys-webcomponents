@@ -150,8 +150,7 @@ export class GuxTabAdvanced {
     }
   }
 
-  @Event()
-  internalactivatetabpanel: EventEmitter<string>;
+  @Event() internalactivatetabpanel: EventEmitter<string>;
 
   // eslint-disable-next-line @typescript-eslint/require-await
   @Method()

@@ -20,8 +20,7 @@ export class GuxInputColorOption {
   /**
    * Triggers when a color is selected
    */
-  @Event()
-  private colorSelect: EventEmitter;
+  @Event() private internalcolorselect: EventEmitter;
 
   render(): JSX.Element {
     return (
@@ -38,6 +37,6 @@ export class GuxInputColorOption {
   }
 
   private onColorOptionClickHandler(): void {
-    this.colorSelect.emit(this.value);
+    this.internalcolorselect.emit(this.value);
   }
 }

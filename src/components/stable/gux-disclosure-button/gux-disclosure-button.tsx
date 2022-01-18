@@ -58,8 +58,7 @@ export class GuxDisclosureButton {
    * Return the state of the components panel on state change
    * @return the panel state
    */
-  @Event()
-  active: EventEmitter<boolean>;
+  @Event() guxactive: EventEmitter<boolean>;
 
   @Watch('isOpen')
   watchIsOpen(): void {
@@ -68,7 +67,7 @@ export class GuxDisclosureButton {
 
   changeState(): void {
     this.togglePanel();
-    this.active.emit(this.isOpen);
+    this.guxactive.emit(this.isOpen);
   }
 
   togglePanel(): void {

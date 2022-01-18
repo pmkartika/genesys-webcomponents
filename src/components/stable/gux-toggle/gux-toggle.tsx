@@ -52,8 +52,7 @@ export class GuxToggle {
   @Prop()
   errorMessage: string;
 
-  @Event()
-  check: EventEmitter<boolean>;
+  @Event() guxcheck: EventEmitter<boolean>;
 
   @Listen('click')
   onClick(): void {
@@ -74,7 +73,7 @@ export class GuxToggle {
     if (!this.disabled && !this.loading) {
       this.checked = !this.checked;
 
-      this.check.emit(this.checked);
+      this.guxcheck.emit(this.checked);
     }
   }
 

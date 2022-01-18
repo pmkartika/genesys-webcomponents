@@ -32,14 +32,14 @@ export class GuxPaginationCursor {
   hasNext: boolean = false;
 
   @Event()
-  private guxPaginationCursorchange: EventEmitter<GuxPaginationCursorDetail>;
+  private guxpaginationcursorchange: EventEmitter<GuxPaginationCursorDetail>;
 
   private onButtonClick(paginationDetail: GuxPaginationCursorDetail): void {
     if (
       (paginationDetail === 'previous' && this.hasPrevious) ||
       (paginationDetail === 'next' && this.hasNext)
     ) {
-      this.guxPaginationCursorchange.emit(paginationDetail);
+      this.guxpaginationcursorchange.emit(paginationDetail);
     }
   }
 

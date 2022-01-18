@@ -17,7 +17,7 @@
 
 | Event                       | Description | Type                                |
 | --------------------------- | ----------- | ----------------------------------- |
-| `guxPaginationCursorchange` |             | `CustomEvent<"next" \| "previous">` |
+| `guxpaginationcursorchange` |             | `CustomEvent<"next" \| "previous">` |
 
 
 ## Dependencies

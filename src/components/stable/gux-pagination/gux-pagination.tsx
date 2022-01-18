@@ -57,8 +57,7 @@ export class GuxPagination implements ComponentInterface {
   @State()
   private totalPages: number;
 
-  @Event()
-  private guxpaginationchange: EventEmitter<GuxPaginationState>;
+  @Event() private guxpaginationchange: EventEmitter<GuxPaginationState>;
 
   private setPage(page: number): void {
     if (page < 0) {

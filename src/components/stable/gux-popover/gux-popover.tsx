@@ -55,8 +55,7 @@ export class GuxPopover {
   /**
    * Fired when a user dismisses the popover
    */
-  @Event()
-  guxdismiss: EventEmitter<void>;
+  @Event() guxdismiss: EventEmitter<void>;
 
   @State()
   hidden: boolean = true;

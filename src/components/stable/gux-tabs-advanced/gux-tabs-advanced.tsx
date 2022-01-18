@@ -38,8 +38,7 @@ export class GuxTabsAdvanced {
   /**
    * Triggers when the active tab changes.
    */
-  @Event()
-  guxactivetabchange: EventEmitter<string>;
+  @Event() guxactivetabchange: EventEmitter<string>;
 
   @Watch('activeTab')
   watchActiveTab(newValue: string) {
