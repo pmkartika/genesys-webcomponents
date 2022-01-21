@@ -167,10 +167,10 @@ export class GuxButtonDropdown {
     if (!this.listboxElement?.getAttribute('aria-label')) {
       this.listboxElement?.setAttribute('aria-label', this.text);
     }
-    // this.listboxElement?.addEventListener(
-    //   'focusout',
-    //   this.onListboxElementFocusout.bind(this)
-    // );
+    this.listboxElement?.addEventListener(
+      'focusout',
+      this.onListboxElementFocusout.bind(this)
+    );
   }
 
   private renderButton(): JSX.Element {
