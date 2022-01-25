@@ -1,17 +1,17 @@
 <h1>gux-action-button</h1>
 <div id="example" class="layout">
   <div class="row">
-    <div class="overlap">
+    <div class="overlap" onchange="notify(event)" oninput="notify(event)">
       <h2>Primary</h2>
       <gux-action-button text="Primary" accent="primary" is-open="true">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2 value="opt1">test</gux-option-v2>
+          <gux-option-v2 value="opt2">test2</gux-option-v2>
+          <gux-option-v2 value="opt3">test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
 
-      <gux-action-button text="Primary" accent="primary">
+      <!-- <gux-action-button text="Primary" accent="primary">
         <gux-action-item text="test" disabled></gux-action-item>
         <gux-action-item text="test2"></gux-action-item>
         <gux-action-item text="test3"></gux-action-item>
@@ -91,7 +91,7 @@
         <gux-list-divider></gux-list-divider>
         <gux-action-item><span>I am a span</span></gux-action-item>
       </gux-action-button>
-    </div>
+    </div> -->
   </div>
 
   <style
