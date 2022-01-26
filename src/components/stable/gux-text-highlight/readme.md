@@ -18,12 +18,14 @@
 
 ### Used by
 
+ - [gux-button-list-item](../gux-action-button/gux-button-list/button-list-item)
  - [gux-command-palette-legacy](../../legacy/gux-command-palette-legacy)
  - [gux-list-item](../gux-list/list-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  gux-button-list-item --> gux-text-highlight
   gux-command-palette-legacy --> gux-text-highlight
   gux-list-item --> gux-text-highlight
   style gux-text-highlight fill:#f9f,stroke:#333,stroke-width:4px

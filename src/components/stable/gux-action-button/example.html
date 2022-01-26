@@ -1,9 +1,18 @@
 <h1>gux-action-button</h1>
-<div id="example" class="layout">
+<div id="example" class="layout" onchange="notify(event)" oninput="notify(event)">
   <div class="row">
-    <div class="overlap" onchange="notify(event)" oninput="notify(event)">
+    <div class="overlap" >
       <h2>Primary</h2>
-      <gux-action-button text="Primary" accent="primary" is-open="true">
+
+      <gux-action-button text="Primary" accent="primary">
+        <gux-action-item text="test" disabled></gux-action-item>
+        <gux-action-item text="test2"></gux-action-item>
+        <gux-action-item text="test3"></gux-action-item>
+        <gux-list-divider></gux-list-divider>
+        <gux-action-item disabled><span>I am a span</span></gux-action-item>
+      </gux-action-button>
+
+      <!-- <gux-action-button text="Primary" accent="primary" is-open="true">
         <gux-listbox>
           <gux-option-v2 value="opt1">test</gux-option-v2>
           <gux-option-v2 value="opt2">test2</gux-option-v2>
@@ -11,42 +20,42 @@
         </gux-listbox>
       </gux-action-button>
 
-      <!-- <gux-action-button text="Primary" accent="primary">
-        <gux-action-item text="test" disabled></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item disabled><span>I am a span</span></gux-action-item>
-      </gux-action-button>
+      <gux-action-button text="Primary" accent="primary">
+        <gux-listbox>
+          <gux-option-v2 value="opt4">test</gux-option-v2>
+          <gux-option-v2 value="opt5">test2</gux-option-v2>
+          <gux-option-v2 value="opt6">test3</gux-option-v2>
+        </gux-listbox>
+      </gux-action-button> -->
     </div>
     <div>
       <h2>Secondary</h2>
       <gux-action-button text="Secondary" accent="secondary">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test 3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2 value="opt7">test</gux-option-v2>
+          <gux-option-v2 value="opt8">test2</gux-option-v2>
+          <gux-option-v2 value="opt9">test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
     <div>
       <h2>Tertiary</h2>
       <gux-action-button text="Tertiary" accent="tertiary">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test 3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
     <div>
       <h2>Disabled</h2>
       <gux-action-button class="disable-toggle" text="Disabled" disabled>
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
   </div>
@@ -55,43 +64,43 @@
     <div>
       <h2>Primary</h2>
       <gux-action-button text="Primary" accent="primary">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
     <div>
       <h2>Secondary</h2>
       <gux-action-button text="Secondary" accent="secondary">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test 3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
     <div>
       <h2>Tertiary</h2>
       <gux-action-button text="Tertiary" accent="tertiary">
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test 3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
     </div>
     <div>
       <h2>Disabled</h2>
       <gux-action-button class="disable-toggle" text="Disabled" disabled>
-        <gux-action-item text="test"></gux-action-item>
-        <gux-action-item text="test2"></gux-action-item>
-        <gux-action-item text="test3"></gux-action-item>
-        <gux-list-divider></gux-list-divider>
-        <gux-action-item><span>I am a span</span></gux-action-item>
+        <gux-listbox>
+          <gux-option-v2>test</gux-option-v2>
+          <gux-option-v2>test2</gux-option-v2>
+          <gux-option-v2>test3</gux-option-v2>
+        </gux-listbox>
       </gux-action-button>
-    </div> -->
+    </div>
   </div>
 
   <style

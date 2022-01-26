@@ -40,6 +40,7 @@ Example usage
 - [gux-popup-beta](../../beta/gux-popup)
 - [gux-button-slot-beta](../../beta/gux-button-slot)
 - [gux-icon](../gux-icon)
+- [gux-button-list](gux-button-list)
 
 ### Graph
 ```mermaid
@@ -47,6 +48,7 @@ graph TD;
   gux-action-button --> gux-popup-beta
   gux-action-button --> gux-button-slot-beta
   gux-action-button --> gux-icon
+  gux-action-button --> gux-button-list
   style gux-action-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -27,10 +27,10 @@ export class GuxActionItem {
   @Event()
   press: EventEmitter<unknown>;
 
-  @Listen('click')
-  handleClick() {
-    this.onItemClicked();
-  }
+  // @Listen('click')
+  // handleClick() {
+  //   this.onItemClicked();
+  // }
 
   @Listen('keydown')
   onKeydown(event: KeyboardEvent): void {
@@ -52,7 +52,8 @@ export class GuxActionItem {
   render(): JSX.Element {
     return (
       <Host role="listitem">
-        <span
+        <button
+          onClick={() => this.onItemClicked()}
           class={{
             'gux-action-item': true,
             'gux-disabled': this.disabled
@@ -60,7 +61,7 @@ export class GuxActionItem {
         >
           {this.text}
           <slot />
-        </span>
+        </button>
       </Host>
     ) as JSX.Element;
   }

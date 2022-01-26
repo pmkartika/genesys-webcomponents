@@ -1,0 +1,44 @@
+@import (reference) '../../../../../style/color.less';
+
+// Variables part
+
+:host {
+  &:focus,
+  &:active,
+  &:hover:not([disabled]) {
+    .gux-button-list-item {
+      color: @gux-type-dark;
+      background: @gux-blue-60;
+    }
+  }
+}
+
+:host(:focus),
+:host(:active),
+:host(:hover:not([disabled])) {
+  .gux-button-list-item {
+    color: @gux-type-dark;
+    background: @gux-blue-60;
+  }
+}
+
+:host([disabled]) {
+  .gux-button-list-item {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.gux-button-list-item {
+  display: flex;
+  height: max-content;
+  padding: 0 16px;
+  line-height: 32px;
+  word-wrap: break-word;
+  cursor: pointer;
+
+  .gux-text {
+    width: 100%;
+  }
+}
