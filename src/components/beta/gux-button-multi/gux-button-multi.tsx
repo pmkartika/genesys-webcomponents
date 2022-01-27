@@ -22,7 +22,7 @@ import { OnClickOutside } from '../../../utils/decorator/on-click-outside';
 export class GuxButtonMulti {
   @Element()
   private root: HTMLElement;
-  listboxElement: HTMLGuxListboxElement;
+  buttonListElement: HTMLGuxButtonListElement;
   dropdownButton: HTMLElement;
   private moveFocusDelay: number = 100;
 
@@ -70,27 +70,31 @@ export class GuxButtonMulti {
       case 'Escape':
         this.expanded = false;
 
-        if (composedPath.includes(this.listboxElement)) {
+        if (composedPath.includes(this.buttonListElement)) {
           this.dropdownButton.focus();
         }
 
         break;
+      case 'Tab': {
+        this.expanded = false;
+        break;
+      }
       case 'Enter':
-        if (this.listboxElement) {
+        event.preventDefault();
+        if (composedPath.includes(this.dropdownButton)) {
+          this.expanded = true;
           setTimeout(() => {
-            this.listboxElement.focus();
+            void this.buttonListElement.setFocusOnFirstItem();
           }, this.moveFocusDelay);
         }
         break;
       case 'ArrowDown':
-        if (document.activeElement !== this.listboxElement) {
-          event.preventDefault();
+        event.preventDefault();
+        if (composedPath.includes(this.dropdownButton)) {
           this.expanded = true;
-          if (this.listboxElement) {
-            setTimeout(() => {
-              this.listboxElement.focus();
-            }, this.moveFocusDelay);
-          }
+          setTimeout(() => {
+            void this.buttonListElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
         }
         break;
     }
@@ -98,11 +102,15 @@ export class GuxButtonMulti {
 
   @Listen('keyup')
   handleKeyup(event: KeyboardEvent): void {
+    const composedPath = event.composedPath();
+
     switch (event.key) {
       case ' ':
-        if (this.listboxElement) {
+        event.preventDefault();
+        if (composedPath.includes(this.dropdownButton)) {
+          this.expanded = true;
           setTimeout(() => {
-            this.listboxElement.focus();
+            void this.buttonListElement.setFocusOnFirstItem();
           }, this.moveFocusDelay);
         }
         break;
@@ -136,23 +144,8 @@ export class GuxButtonMulti {
     }
   }
 
-  private onListboxElementFocusout(): void {
-    this.expanded = false;
-  }
-
   componentWillLoad(): void {
     trackComponent(this.root, { variant: this.accent });
-    this.listboxElement = this.root.querySelector('gux-listbox');
-  }
-
-  componentDidLoad(): void {
-    if (!this.listboxElement?.getAttribute('aria-label')) {
-      this.listboxElement?.setAttribute('aria-label', this.text);
-    }
-    this.listboxElement?.addEventListener(
-      'focusout',
-      this.onListboxElementFocusout.bind(this)
-    );
   }
 
   render(): JSX.Element {
@@ -168,7 +161,7 @@ export class GuxButtonMulti {
               disabled={this.disabled}
               ref={el => (this.dropdownButton = el)}
               onClick={() => this.toggle()}
-              aria-haspopup="listbox"
+              aria-haspopup="true"
               aria-expanded={this.expanded.toString()}
             >
               <span>{this.text}</span>
@@ -176,9 +169,9 @@ export class GuxButtonMulti {
             </button>
           </gux-button-slot-beta>
         </div>
-        <div slot="popup">
+        <gux-button-list slot="popup" ref={el => (this.buttonListElement = el)}>
           <slot />
-        </div>
+        </gux-button-list>
       </gux-popup-beta>
     ) as JSX.Element;
   }

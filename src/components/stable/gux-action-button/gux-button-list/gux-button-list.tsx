@@ -52,17 +52,6 @@ export class GuxList {
   @Event()
   changed: EventEmitter<unknown>;
 
-  /**
-   * Using a mutation observer because component loading order is not quite right.
-   * In this case we are attempting to update a component that updates a component.
-   * What ends up happening is that there is no hook to make sure all components have loaded.
-   * When the DOM load order gets fixed we should be able to remove this logic.
-   * https://github.com/ionic-team/stencil/issues/1261
-   */
-  private observer: MutationObserver = new MutationObserver(() => {
-    this.performHighlight(this.highlight);
-  });
-
   emitChanged(value: unknown) {
     this.changed.emit(value);
   }
@@ -125,26 +114,12 @@ export class GuxList {
     trackComponent(this.root);
   }
 
-  /**
-   * Once the component is loaded
-   */
-  componentDidLoad() {
-    this.performHighlight(this.highlight);
-    this.observer.observe(this.root, { childList: true, subtree: true });
-  }
-
-  disconnectedCallback(): void {
-    this.observer.disconnect();
-  }
-
   render(): JSX.Element {
-    this.performHighlight(this.highlight);
     this.updateTabIndexes();
     return (
       <div
         class="gux-button-list-items-container"
         role="list"
-        tabindex={0}
         onKeyDown={e => this.onKeyDown(e)}
       >
         <slot />
@@ -153,11 +128,6 @@ export class GuxList {
   }
 
   private onKeyDown(event: KeyboardEvent): void {
-    const validKeys = ['ArrowUp', 'ArrowDown', 'End', 'Home'];
-    if (!validKeys.includes(event.key)) {
-      return;
-    }
-
     const filteredList = this.getFilteredList();
 
     let newIndex = -1;
@@ -207,29 +177,20 @@ export class GuxList {
       return;
     }
 
-    // children.forEach((element: HTMLGuxListItemElement, index: number) => {
-    //   // console.log(element, element.shadowRoot.querySelector('button'))
-    //   if (index !== this.selectedIndex) {
-    //     element.shadowRoot.querySelector('button').setAttribute('tabindex', '-1');
-    //   } else {
-    //     element.shadowRoot.querySelector('button').setAttribute('tabindex', '0');
-    //     element.shadowRoot.querySelector('button').focus();
-    //     setTimeout(() => {
-    //       this.value = element.value;
-    //     });
-    //   }
-    // });
-  }
-
-  private performHighlight(value: string): void {
-    const items = this.root.querySelectorAll('gux-text-highlight');
-
-    if (!items) {
-      return;
-    }
-
-    items.forEach((element: HTMLGuxTextHighlightElement) => {
-      element.highlight = value;
+    children.forEach((element: HTMLGuxActionItemElement, index: number) => {
+      if (index !== this.selectedIndex) {
+        element.shadowRoot
+          .querySelector('button')
+          .setAttribute('tabindex', '-1');
+      } else {
+        element.shadowRoot
+          .querySelector('button')
+          .setAttribute('tabindex', '0');
+        element.shadowRoot.querySelector('button').focus();
+        setTimeout(() => {
+          this.value = element.value;
+        });
+      }
     });
   }
 

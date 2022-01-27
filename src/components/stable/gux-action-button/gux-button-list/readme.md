@@ -89,11 +89,13 @@ Type: `Promise<void>`
 ### Used by
 
  - [gux-action-button](..)
+ - [gux-button-multi](../../../beta/gux-button-multi)
 
 ### Graph
 ```mermaid
 graph TD;
   gux-action-button --> gux-button-list
+  gux-button-multi --> gux-button-list
   style gux-button-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
