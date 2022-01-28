@@ -29,9 +29,10 @@ import defaultResources from './i18n/en.json';
 export class GuxButtonDropdown {
   @Element()
   private root: HTMLElement;
-  listboxElement: HTMLGuxListboxElement;
+  buttonListElement: HTMLGuxButtonListElement;
   dropdownButton: HTMLElement;
   actionButton: HTMLElement;
+  private moveFocusDelay: number = 100;
   private i18n: GetI18nValue;
 
   /**
@@ -95,18 +96,47 @@ export class GuxButtonDropdown {
     switch (event.key) {
       case 'Escape':
         this.expanded = false;
-        if (composedPath.includes(this.listboxElement)) {
+        if (composedPath.includes(this.buttonListElement)) {
           this.dropdownButton.focus();
         }
         break;
+      case 'Tab': {
+        this.expanded = false;
+        break;
+      }
 
       case 'ArrowDown':
-        if (
-          document.activeElement !== this.listboxElement &&
-          document.activeElement !== this.actionButton
-        ) {
+        if (composedPath.includes(this.dropdownButton)) {
           event.preventDefault();
           this.expanded = true;
+          setTimeout(() => {
+            void this.buttonListElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
+        break;
+      case 'Enter':
+        if (composedPath.includes(this.dropdownButton)) {
+          this.expanded = true;
+          setTimeout(() => {
+            void this.buttonListElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
+        }
+        break;
+    }
+  }
+
+  @Listen('keyup')
+  handleKeyup(event: KeyboardEvent): void {
+    const composedPath = event.composedPath();
+
+    switch (event.key) {
+      case ' ':
+        if (composedPath.includes(this.dropdownButton)) {
+          event.preventDefault();
+          this.expanded = true;
+          setTimeout(() => {
+            void this.buttonListElement.setFocusOnFirstItem();
+          }, this.moveFocusDelay);
         }
         break;
     }
@@ -122,10 +152,10 @@ export class GuxButtonDropdown {
   @Watch('expanded')
   watchValue(expanded: boolean): void {
     if (expanded) {
-      if (this.listboxElement) {
+      if (this.buttonListElement) {
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            this.listboxElement.focus();
+            this.buttonListElement.focus();
           });
         });
       }
@@ -153,24 +183,9 @@ export class GuxButtonDropdown {
     }
   }
 
-  private onListboxElementFocusout(): void {
-    this.expanded = false;
-  }
-
   async componentWillLoad(): Promise<void> {
     trackComponent(this.root, { variant: this.accent });
-    this.listboxElement = this.root.querySelector('gux-listbox');
     this.i18n = await buildI18nForComponent(this.root, defaultResources);
-  }
-
-  componentDidLoad(): void {
-    if (!this.listboxElement?.getAttribute('aria-label')) {
-      this.listboxElement?.setAttribute('aria-label', this.text);
-    }
-    this.listboxElement?.addEventListener(
-      'focusout',
-      this.onListboxElementFocusout.bind(this)
-    );
   }
 
   private renderButton(): JSX.Element {
@@ -193,7 +208,7 @@ export class GuxButtonDropdown {
             disabled={this.disabled}
             ref={el => (this.dropdownButton = el)}
             onClick={() => this.toggle()}
-            aria-haspopup="listbox"
+            aria-haspopup="true"
             aria-expanded={this.expanded.toString()}
             aria-label={this.i18n('actionButtonDropdown', {
               buttonTitle: this.text
@@ -211,7 +226,7 @@ export class GuxButtonDropdown {
             disabled={this.disabled}
             ref={el => (this.dropdownButton = el)}
             onClick={() => this.toggle()}
-            aria-haspopup="listbox"
+            aria-haspopup="true"
             aria-expanded={this.expanded.toString()}
           >
             <span>{this.text}</span>
@@ -235,9 +250,9 @@ export class GuxButtonDropdown {
         >
           {this.renderButton()}
         </div>
-        <div slot="popup">
+        <gux-button-list slot="popup" ref={el => (this.buttonListElement = el)}>
           <slot />
-        </div>
+        </gux-button-list>
       </gux-popup-beta>
     ) as JSX.Element;
   }
