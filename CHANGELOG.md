@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-alpha.26](https://inindca///compare/v3.0.0-alpha.25...v3.0.0-alpha.26) (2022-01-29)
+
+
+### Bug Fixes
+
+* **gux-dropdown:** gux-dropdown within a gux-panel closes when scroll button is clicked ([2d538dd](https://inindca///commit/2d538dd1ae56c9757691f6e010830238740accef))
+* **gux-tab-panel:** fixed tabpanel outline shown on click in safari ([4cbbc58](https://inindca///commit/4cbbc586438f3265d005818a247e217fb36d5e59))
+
+## [3.0.0-alpha.25](https://inindca///compare/v3.0.0-alpha.24...v3.0.0-alpha.25) (2022-01-26)
+
+
+### Features
+
+* **chart-donut:** extract chart-pie out of chart-donut ([87d4c9d](https://inindca///commit/87d4c9d19d314e2e6f6a046964f769601bec9358))
+* **gux-chart-donut:** add default ring size to match spec ([7d1eb62](https://inindca///commit/7d1eb6248792b754146cd593dfa904a59c510bd6))
+* **gux-chart-donut:** add donut and pie chart ([2bfef7d](https://inindca///commit/2bfef7de448ac68140fe0e89c444163943b53f48))
+* **radial-progress:** now using Stencil functional components internally ([678860b](https://inindca///commit/678860b8a3ebd9064cf464c7fd849fcd545c28f8))
+
+## [3.0.0-alpha.24](https://inindca///compare/v3.0.0-alpha.23...v3.0.0-alpha.24) (2022-01-25)
+
+
+### Bug Fixes
+
+* **gux-popup:** fix popup alignment ([e32bddd](https://inindca///commit/e32bddd59984c2901f38a4fe75826616b09d1324))
+
+## [3.0.0-alpha.23](https://inindca///compare/v3.0.0-alpha.22...v3.0.0-alpha.23) (2022-01-22)
+
+
+### Bug Fixes
+
+* **title-attribute:** removed redundant title attributes ([92e35eb](https://inindca///commit/92e35eba1ec2d8dcdd57f689ff6920ac21390a1e))
+
 ## [3.0.0-alpha.22](https://inindca///compare/v3.0.0-alpha.21...v3.0.0-alpha.22) (2022-01-14)
 
 
