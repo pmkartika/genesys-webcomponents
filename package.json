@@ -1,6 +1,6 @@
 {
   "name": "@genesys/common-webcomponents",
-  "version": "3.0.0-alpha.26",
+  "version": "3.0.0-alpha.36",
   "description": "Common webcomponents",
   "license": "MIT",
   "main": "dist/stencil-wrapper.js",
@@ -32,7 +32,7 @@
     "lint.commit": "commitlint -f 811627c6ed30490b975acc4cbc2c2f4bac32e8ae",
     "lint.css": "npx stylelint '**/*.{css,html,less}' --fix",
     "lint.fix": "npm run lint.commit && npm run lint.ts -- --fix && npm run lint.css -- --fix",
-    "lint.svg": "svgo -f ./src/components/stable/gux-icon/icons --multipass -q",
+    "lint.svg": "svgo -f ./src/components/stable/gux-icon/icons",
     "lint.ts": "TIMING=1 eslint --ext .ts,.tsx ./src",
     "list-checked-a11y-components": "node scripts/list-checked-a11y-components.js",
     "list-component-tracking": "./scripts/list-component-tracking.js",
@@ -59,7 +59,6 @@
   "dependencies": {
     "@popperjs/core": "^2.10.2",
     "eslint-plugin-jest": "^25.3.0",
-    "focus-trap": "^6.6.1",
     "intl-messageformat": "~9.4.9",
     "requestanimationframe-timer": "^3.0.3",
     "sortablejs": "^1.14.0",
