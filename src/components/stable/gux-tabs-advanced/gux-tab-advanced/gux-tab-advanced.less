@@ -10,16 +10,14 @@
 }
 
 gux-tab-advanced {
-  &:last-child {
-    .gux-tab {
-      .gux-tab-button {
-        border-right: none !important;
-      }
+  &:not(:last-child) .gux-tab:not(.gux-dropdown-options) {
+    .gux-tab-button {
+      border-right: 1px solid @gux-grey-50;
+    }
 
-      .gux-tab-options-button {
-        gux-icon {
-          border-right: none !important;
-        }
+    .gux-tab-options-button {
+      gux-icon {
+        border-right: 1px solid @gux-grey-50;
       }
     }
   }
@@ -92,7 +90,6 @@ gux-tab-advanced {
         height: 30px;
         padding-right: 10px;
         padding-left: 8px;
-        border-right: 1px solid @gux-grey-50;
         transition: color 0.25s;
       }
     }
@@ -102,7 +99,6 @@ gux-tab-advanced {
         width: 160px;
         height: 30px;
         padding-right: 16px;
-        border-right: 1px solid @gux-grey-50;
 
         &:focus-visible {
           height: 90%;
